@@ -305,5 +305,5 @@ int main( int argc, char* args[] )
     clean(window,renderer,&textures,&world);
     
     
-    return 0;
+    return 0;//Commentaire pertinent
 }
