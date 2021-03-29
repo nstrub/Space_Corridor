@@ -59,6 +59,37 @@
 
 
 /**
+*\struct sprite_s
+*\typedef sprite_t
+*\brief Représente un sprite du jeu
+*/
+struct sprite_s{
+    int x; /*!< Abscisse du centre de l'image. */
+    int y; /*!< Ordonnée du centre de l'image. */
+    int h; /*!< Hauteur de l'image.*/
+    int w; /*!< Largeur de l'image.*/
+};
+typedef struct sprite_s sprite_t;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
  * \brief Représentation pour stocker les textures nécessaires à l'affichage graphique
 */
 
