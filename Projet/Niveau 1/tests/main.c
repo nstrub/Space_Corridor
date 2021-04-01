@@ -144,8 +144,8 @@ void print_sprite(sprite_t *sprite)
 
 void init_data(world_t * world){
     //initialisation du vaisseau dans le monde
-    world->vaisseau.x = SCREEN_WIDTH/2;
-    world->vaisseau.y = SCREEN_HEIGHT - SHIP_SIZE;
+    world->vaisseau.x = SCREEN_WIDTH/2 - SHIP_SIZE/2;
+    world->vaisseau.y = SCREEN_HEIGHT - SHIP_SIZE*2;
     world->vaisseau.h = SHIP_SIZE;
     world->vaisseau.w = SHIP_SIZE;    
 
@@ -160,11 +160,6 @@ void init_data(world_t * world){
  * \brief La fonction nettoie les données du monde
  * \param world les données du monde
  */
-    //initialisation du vaisseau dans le monde
-    world->vaisseau.x = SCREEN_WIDTH/2;
-    world->vaisseau.y = SCREEN_HEIGHT - SHIP_SIZE;
-    world->vaisseau.h = SHIP_SIZE;
-    world->vaisseau.w = SHIP_SIZE;
 
 void clean_data(world_t *world){
     /* utile uniquement si vous avez fait de l'allocation dynamique (malloc); la fonction ici doit permettre de libérer la mémoire (free) */
@@ -303,8 +298,8 @@ void refresh_graphics(SDL_Renderer *renderer, world_t *world,textures_t *texture
     
     //application des textures dans le renderer
     apply_background(renderer, textures->background);
-    //Niveau 1 question 2.11 ======================================================================================================================
-    //apply_sprite(renderer, textures->vaisseau, CE QU'A FAIT NICOLAS)
+
+    apply_sprite(renderer, textures->vaisseau, &world->vaisseau);
     
     // on met à jour l'écran
     update_screen(renderer);
