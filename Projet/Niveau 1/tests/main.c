@@ -111,9 +111,7 @@ typedef struct textures_s textures_t;
 */
 
 struct world_s{
-    /*
-      A COMPLETER
-     */
+    sprite_t vaisseau; /*! < Ajout d'un vaisseau de type sprite_t au monde */
     
     int gameover; /*!< Champ indiquant si l'on est à la fin du jeu */
 
@@ -126,7 +124,17 @@ struct world_s{
 typedef struct world_s world_t;
 
 
+/**
+ * \brief fonction qui affiche dans le terminal les coordonées d'un sprite
+ * \param sprite le sprite
+ */
 
+
+void print_sprite(sprite_t *sprite)
+{
+    printf("Les coordonnées du sprite x/y sont : %d et %d\n",sprite->x,sprite->y);
+    printf("La hauteur et largeur font : %d et %d\n",sprite->h,sprite->w);
+}
 
 
 /**
@@ -134,9 +142,14 @@ typedef struct world_s world_t;
  * \param world les données du monde
  */
 
-
 void init_data(world_t * world){
-    
+    //initialisation du vaisseau dans le monde
+    world->vaisseau.x = SCREEN_WIDTH/2;
+    world->vaisseau.y = SCREEN_HEIGHT - SHIP_SIZE;
+    world->vaisseau.h = SHIP_SIZE;
+    world->vaisseau.w = SHIP_SIZE;    
+
+    print_sprite(&world->vaisseau);
     //on n'est pas à la fin du jeu
     world->gameover = 0;
     
@@ -147,11 +160,32 @@ void init_data(world_t * world){
  * \brief La fonction nettoie les données du monde
  * \param world les données du monde
  */
-
+    //initialisation du vaisseau dans le monde
+    world->vaisseau.x = SCREEN_WIDTH/2;
+    world->vaisseau.y = SCREEN_HEIGHT - SHIP_SIZE;
+    world->vaisseau.h = SHIP_SIZE;
+    world->vaisseau.w = SHIP_SIZE;
 
 void clean_data(world_t *world){
     /* utile uniquement si vous avez fait de l'allocation dynamique (malloc); la fonction ici doit permettre de libérer la mémoire (free) */
     
+}
+
+
+
+
+/**
+ * \brief La fonction nettoie les données du monde
+ * \param *sprite l'adresse de l'enregistrement de type sprite_t
+ * \param int x, int y les coordonnées du sprite
+ * \param  int w, int h la largeur et hauteur du sprite
+ */
+void init_sprite(sprite_t *sprite, int x, int y, int w, int h)
+{
+    sprite->x = x;
+    sprite->y = y;
+    sprite->w = w;
+    sprite->h = h;
 }
 
 
