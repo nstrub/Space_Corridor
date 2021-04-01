@@ -247,10 +247,10 @@ void apply_background(SDL_Renderer *renderer, SDL_Texture *texture){
     }
 }
 
+//Niveau 1 question 2.10
 void apply_sprite(SDL_Renderer *renderer, SDL_Texture *texture, sprite_t *sprite){
-    // Va appliquer la texture t
-
-
+    // Va appliquer la texture "texture" associée au sprite "sprite" sur le renderer "renderer" à la position indiqué dans le sprite
+    apply_texture(texture, renderer, sprite->x, sprite->y);
 }
 
 
@@ -269,7 +269,8 @@ void refresh_graphics(SDL_Renderer *renderer, world_t *world,textures_t *texture
     
     //application des textures dans le renderer
     apply_background(renderer, textures->background);
-    /* A COMPLETER */
+    //Niveau 1 question 2.11 ======================================================================================================================
+    //apply_sprite(renderer, textures->vaisseau, CE QU'A FAIT NICOLAS)
     
     // on met à jour l'écran
     update_screen(renderer);
