@@ -95,7 +95,7 @@ typedef struct sprite_s sprite_t;
 
 struct textures_s{
     SDL_Texture* background; /*!< Texture liée à l'image du fond de l'écran. */
-    /* A COMPLETER */
+    SDL_Texture* vaisseau; /*!< Texture liée à l'image du vaisseau. */
 };
 
 
@@ -213,6 +213,7 @@ void handle_events(SDL_Event *event,world_t *world){
 
 void clean_textures(textures_t *textures){
     clean_texture(textures->background);
+    clean_texture(textures->vaisseau);
     /* A COMPLETER */
 }
 
@@ -226,6 +227,7 @@ void clean_textures(textures_t *textures){
 
 void  init_textures(SDL_Renderer *renderer, textures_t *textures){
     textures->background = load_image( "ressources/background.bmp",renderer);
+    textures->vaisseau = load_image( "ressources/spaceship.bmp", renderer);
     
     /* A COMPLETER */
 
@@ -245,7 +247,11 @@ void apply_background(SDL_Renderer *renderer, SDL_Texture *texture){
     }
 }
 
+void apply_sprite(SDL_Renderer *renderer, SDL_Texture *texture, sprite_t *sprite){
+    // Va appliquer la texture t
 
+
+}
 
 
 
