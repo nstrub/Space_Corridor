@@ -96,6 +96,7 @@ typedef struct sprite_s sprite_t;
 struct textures_s{
     SDL_Texture* background; /*!< Texture liée à l'image du fond de l'écran. */
     SDL_Texture* vaisseau; /*!< Texture liée à l'image du vaisseau. */
+    SDL_Texture* arrivee; /*!< Texture liée à l'image de la ligne d'arrivée */
 };
 
 
@@ -112,8 +113,10 @@ typedef struct textures_s textures_t;
 
 struct world_s{
     sprite_t vaisseau; /*! < Ajout d'un vaisseau de type sprite_t au monde */
+    sprite_t arrivee; /*! < Ajout de la ligne d'arrivée de type sprite_t au monde */
     
     int gameover; /*!< Champ indiquant si l'on est à la fin du jeu */
+    int vitesse; /*!< Vitesse de déplacement de base des strucures*/
 
 };
 
@@ -147,11 +150,18 @@ void init_data(world_t * world){
     world->vaisseau.x = SCREEN_WIDTH/2 - SHIP_SIZE/2;
     world->vaisseau.y = SCREEN_HEIGHT - SHIP_SIZE*2;
     world->vaisseau.h = SHIP_SIZE;
-    world->vaisseau.w = SHIP_SIZE;    
+    world->vaisseau.w = SHIP_SIZE;
+
+    //Initialisation de la ligne d'arrivée
+    world->arrivee.x = 0;
+    world->arrivee.y = FINISH_LINE_HEIGHT;
 
     print_sprite(&world->vaisseau);
     //on n'est pas à la fin du jeu
     world->gameover = 0;
+
+    // Vitesse de base
+    world->vitesse = INITIAL_SPEED;
     
 }
 
@@ -203,7 +213,7 @@ int is_game_over(world_t *world){
  */
 
 void update_data(world_t *world){
-    /* A COMPLETER */
+    world->arrivee.y += world->vitesse ;
 }
 
 
@@ -251,6 +261,7 @@ void handle_events(SDL_Event *event,world_t *world){
 void clean_textures(textures_t *textures){
     clean_texture(textures->background);
     clean_texture(textures->vaisseau);
+    clean_texture(textures->arrivee);
     /* A COMPLETER */
 }
 
@@ -265,7 +276,7 @@ void clean_textures(textures_t *textures){
 void  init_textures(SDL_Renderer *renderer, textures_t *textures){
     textures->background = load_image( "ressources/background.bmp",renderer);
     textures->vaisseau = load_image( "ressources/spaceship.bmp", renderer);
-    
+    textures->arrivee = load_image( "ressources/finish_line.bmp", renderer);
     /* A COMPLETER */
 
     
@@ -308,6 +319,7 @@ void refresh_graphics(SDL_Renderer *renderer, world_t *world,textures_t *texture
     apply_background(renderer, textures->background);
 
     apply_sprite(renderer, textures->vaisseau, &world->vaisseau);
+    apply_sprite(renderer, textures->arrivee, &world->arrivee);
     
     // on met à jour l'écran
     update_screen(renderer);
