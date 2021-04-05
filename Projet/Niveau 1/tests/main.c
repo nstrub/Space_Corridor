@@ -97,6 +97,7 @@ struct textures_s{
     SDL_Texture* background; /*!< Texture liée à l'image du fond de l'écran. */
     SDL_Texture* vaisseau; /*!< Texture liée à l'image du vaisseau. */
     SDL_Texture* arrivee; /*!< Texture liée à l'image de la ligne d'arrivée */
+    SDL_Texture* meteorite; /*!< Texture liée à l'image de meteorite */
 };
 
 
@@ -114,6 +115,7 @@ typedef struct textures_s textures_t;
 struct world_s{
     sprite_t vaisseau; /*! < Ajout d'un vaisseau de type sprite_t au monde */
     sprite_t arrivee; /*! < Ajout de la ligne d'arrivée de type sprite_t au monde */
+    sprite_t mur; /*! <Ajout du mur de meteorite de type sprite_t au monde */
     
     int gameover; /*!< Champ indiquant si l'on est à la fin du jeu */
     int vitesse; /*!< Vitesse de déplacement de base des strucures*/
@@ -155,6 +157,8 @@ void init_data(world_t * world){
     //Initialisation de la ligne d'arrivée
     world->arrivee.x = 0;
     world->arrivee.y = FINISH_LINE_HEIGHT;
+    //world->arrivee.h = FINISH_LINE_HEIGHT; surment pas utile
+    //world->arrivee.w = SCREEN_WIDTH;
 
     print_sprite(&world->vaisseau);
     //on n'est pas à la fin du jeu
@@ -162,6 +166,12 @@ void init_data(world_t * world){
 
     // Vitesse de base
     world->vitesse = INITIAL_SPEED;
+
+    // Mur et meteores
+    world->mur.x = SCREEN_WIDTH/2 - METEORITE_SIZE/2*3;
+    world->mur.y = SCREEN_HEIGHT/2 - METEORITE_SIZE/2*7;
+
+
     
 }
 
@@ -213,7 +223,11 @@ int is_game_over(world_t *world){
  */
 
 void update_data(world_t *world){
+    // Déplacement de la ligne d'arrivée
     world->arrivee.y += world->vitesse ;
+
+    // Déplacement du mur de météore
+    world->mur.y += world->vitesse ;
 }
 
 
@@ -262,6 +276,7 @@ void clean_textures(textures_t *textures){
     clean_texture(textures->background);
     clean_texture(textures->vaisseau);
     clean_texture(textures->arrivee);
+    clean_texture(textures->meteorite);
     /* A COMPLETER */
 }
 
@@ -277,6 +292,7 @@ void  init_textures(SDL_Renderer *renderer, textures_t *textures){
     textures->background = load_image( "ressources/background.bmp",renderer);
     textures->vaisseau = load_image( "ressources/spaceship.bmp", renderer);
     textures->arrivee = load_image( "ressources/finish_line.bmp", renderer);
+    textures->meteorite = load_image( "ressources/meteorite.bmp", renderer);
     /* A COMPLETER */
 
     
@@ -320,9 +336,16 @@ void refresh_graphics(SDL_Renderer *renderer, world_t *world,textures_t *texture
 
     apply_sprite(renderer, textures->vaisseau, &world->vaisseau);
     apply_sprite(renderer, textures->arrivee, &world->arrivee);
-    
+
+    //Mur de météorites
+    for(int y = 0; y < 7; y++){
+        for(int x = 0; x < 3; x ++){
+            apply_texture(textures->meteorite, renderer, world->mur.x + x * METEORITE_SIZE , world->mur.y + y * METEORITE_SIZE);
+        }
+    }
     // on met à jour l'écran
     update_screen(renderer);
+
 }
 
 
