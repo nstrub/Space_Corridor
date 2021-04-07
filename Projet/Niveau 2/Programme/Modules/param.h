@@ -7,8 +7,12 @@
  */
 
 
+
+
 #ifndef PARAM_H
 #define PARAM_H
+
+#include "graphics.h"
 
 /**
  * \brief Largeur de l'écran de jeu
@@ -55,6 +59,7 @@
 */
 
 #define INITIAL_SPEED 2
+
 
 
 #endif

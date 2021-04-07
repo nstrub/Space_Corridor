@@ -6,10 +6,15 @@
  * \date 7 avril 2021
  */
 
-#include "sdl2-light.h"
+
 
 #ifndef GRAPHICS_H
 #define GRAPHICS_H
+
+#include "sdl2-light.h"
+#include "param.h"
+#include "monde.h"
+
 
 
 // DEFINITION DES STRUCTURES //
@@ -46,6 +51,14 @@ struct textures_s{
 */
 
 typedef struct textures_s textures_t;
+
+
+
+
+
+
+
+
 
 
 
