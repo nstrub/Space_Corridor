@@ -6,7 +6,7 @@
  * \date 7 avril 2021
  */
 
-#include "../sdl2-light.h"
+#include "sdl2-light.h"
 
 #ifndef GRAPHICS_H
 #define GRAPHICS_H
