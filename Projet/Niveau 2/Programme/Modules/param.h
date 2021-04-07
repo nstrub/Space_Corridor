@@ -1,5 +1,5 @@
 /**
- * \file graphic.h
+ * \file param.h
  * \brief Module contenant toutes les constantes
  * \author STRUB Nicolas DEMANGE Dan
  * \version 1.0
