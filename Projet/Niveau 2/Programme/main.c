@@ -6,7 +6,7 @@
  * \date 18 mars 2021
  */
 
-#include "sdl2-light.h"
+#include "Modules/sdl2-light.h"
 
 
 /**
@@ -190,22 +190,6 @@ void clean_data(world_t *world){
 
 
 /**
- * \brief La fonction nettoie les données du monde
- * \param *sprite l'adresse de l'enregistrement de type sprite_t
- * \param int x, int y les coordonnées du sprite
- * \param  int w, int h la largeur et hauteur du sprite
- */
-void init_sprite(sprite_t *sprite, int x, int y, int w, int h)
-{
-    sprite->x = x;
-    sprite->y = y;
-    sprite->w = w;
-    sprite->h = h;
-}
-
-
-
-/**
  * \brief La fonction indique si le jeu est fini en fonction des données du monde
  * \param world les données du monde
  * \return 1 si le jeu est fini, 0 sinon
@@ -287,120 +271,6 @@ void handle_events(SDL_Event *event,world_t *world){
             }
         }
     }
-}
-
-
-/**
- * \brief La fonction nettoie les textures
- * \param textures les textures
-*/
-
-void clean_textures(textures_t *textures){
-    clean_texture(textures->background);
-    clean_texture(textures->vaisseau);
-    clean_texture(textures->arrivee);
-    clean_texture(textures->meteorite);
-    /* A COMPLETER */
-}
-
-
-
-/**
- * \brief La fonction initialise les textures nécessaires à l'affichage graphique du jeu
- * \param screen la surface correspondant à l'écran de jeu
- * \param textures les textures du jeu
-*/
-
-void  init_textures(SDL_Renderer *renderer, textures_t *textures){
-    textures->background = load_image( "ressources/space-background.bmp",renderer);
-    textures->vaisseau = load_image( "ressources/spaceship.bmp", renderer);
-    textures->arrivee = load_image( "ressources/finish_line.bmp", renderer);
-    textures->meteorite = load_image( "ressources/meteorite.bmp", renderer);
-    /* A COMPLETER */
-
-    
-}
-
-
-/**
- * \brief La fonction applique la texture du fond sur le renderer lié à l'écran de jeu
- * \param renderer le renderer
- * \param texture la texture liée au fond
-*/
-
-void apply_background(SDL_Renderer *renderer, SDL_Texture *texture){
-    if(texture != NULL){
-      apply_texture(texture, renderer, 0, 0);
-    }
-}
-
-//Niveau 1 question 2.10
-void apply_sprite(SDL_Renderer *renderer, SDL_Texture *texture, sprite_t *sprite){
-    // Va appliquer la texture "texture" associée au sprite "sprite" sur le renderer "renderer" à la position indiqué dans le sprite
-    apply_texture(texture, renderer, sprite->x, sprite->y);
-}
-
-
-
-/**
- * \brief La fonction rafraichit l'écran en fonction de l'état des données du monde
- * \param renderer le renderer lié à l'écran de jeu
- * \param world les données du monde
- * \param textures les textures
- */
-
-void refresh_graphics(SDL_Renderer *renderer, world_t *world,textures_t *textures){
-    
-    //on vide le renderer
-    clear_renderer(renderer);
-    
-    //application des textures dans le renderer
-    apply_background(renderer, textures->background);
-
-    apply_sprite(renderer, textures->vaisseau, &world->vaisseau);
-    apply_sprite(renderer, textures->arrivee, &world->arrivee);
-
-    //Mur de météorites
-    for(int y = 0; y < 7; y++){
-        for(int x = 0; x < 3; x ++){
-            apply_texture(textures->meteorite, renderer, world->mur.x + x * METEORITE_SIZE , world->mur.y + y * METEORITE_SIZE);
-        }
-    }
-    // on met à jour l'écran
-    update_screen(renderer);
-
-}
-
-
-
-/**
-* \brief fonction qui nettoie le jeu: nettoyage de la partie graphique (SDL), nettoyage des textures, nettoyage des données
-* \param window la fenêtre du jeu
-* \param renderer le renderer
-* \param textures les textures
-* \param world le monde
-*/
-
-void clean(SDL_Window *window, SDL_Renderer * renderer, textures_t *textures, world_t * world){
-    clean_data(world);
-    clean_textures(textures);
-    clean_sdl(renderer,window);
-}
-
-
-
-/**
- * \brief fonction qui initialise le jeu: initialisation de la partie graphique (SDL), chargement des textures, initialisation des données
- * \param window la fenêtre du jeu
- * \param renderer le renderer
- * \param textures les textures
- * \param world le monde
- */
-
-void init(SDL_Window **window, SDL_Renderer ** renderer, textures_t *textures, world_t * world){
-    init_sdl(window,renderer,SCREEN_WIDTH, SCREEN_HEIGHT);
-    init_data(world);
-    init_textures(*renderer,textures);
 }
 
 
