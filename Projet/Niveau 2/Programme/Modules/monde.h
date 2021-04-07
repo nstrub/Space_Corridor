@@ -11,30 +11,9 @@
 #ifndef MONDE_H
 #define MONDE_H
 
-#include "sdl2-light.h"
 #include "param.h"
-#include "graphics.h"
 
 
-/**
- * \brief Représentation du monde du jeu
-*/
-
-struct world_s{
-    sprite_t vaisseau; /*! < Ajout d'un vaisseau de type sprite_t au monde */
-    sprite_t arrivee; /*! < Ajout de la ligne d'arrivée de type sprite_t au monde */
-    sprite_t mur; /*! <Ajout du mur de meteorite de type sprite_t au monde */
-    
-    int gameover; /*!< Champ indiquant si l'on est à la fin du jeu */
-    int vitesse; /*!< Vitesse de déplacement de base des strucures*/
-
-};
-
-/**
- * \brief Type qui correspond aux données du monde
- */
-
-typedef struct world_s world_t;
 
 /**
  * \brief La fonction initialise les données du monde du jeu

@@ -7,14 +7,10 @@
  */
 
 
-
-
-
-
-#include "sdl2-light.h"
-#include "param.h"
 #include "graphics.h"
 #include "monde.h"
+#include "param.h"
+
 
 
 

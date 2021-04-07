@@ -11,55 +11,7 @@
 #ifndef GRAPHICS_H
 #define GRAPHICS_H
 
-#include "sdl2-light.h"
 #include "param.h"
-#include "monde.h"
-
-
-
-// DEFINITION DES STRUCTURES //
-
-/**
-*\struct sprite_s
-*\typedef sprite_t
-*\brief Représente un sprite du jeu
-*/
-struct sprite_s{
-    int x; /*!< Abscisse du centre de l'image. */
-    int y; /*!< Ordonnée du centre de l'image. */
-    int h; /*!< Hauteur de l'image.*/
-    int w; /*!< Largeur de l'image.*/
-};
-typedef struct sprite_s sprite_t;
-
-
-
-/**
- * \brief Représentation pour stocker les textures nécessaires à l'affichage graphique
-*/
-
-struct textures_s{
-    SDL_Texture* background; /*!< Texture liée à l'image du fond de l'écran. */
-    SDL_Texture* vaisseau; /*!< Texture liée à l'image du vaisseau. */
-    SDL_Texture* arrivee; /*!< Texture liée à l'image de la ligne d'arrivée */
-    SDL_Texture* meteorite; /*!< Texture liée à l'image de meteorite */
-};
-
-
-/**
- * \brief Type qui correspond aux textures du jeu
-*/
-
-typedef struct textures_s textures_t;
-
-
-
-
-
-
-
-
-
 
 
 

@@ -6,12 +6,9 @@
  * \date 07/04/2021
  */
 
-
-#include "sdl2-light.h"
 #include "graphics.h"
-#include "param.h"
 #include "monde.h"
-
+#include "param.h"
 
 
 //Les fonctions
@@ -91,7 +88,6 @@ void refresh_graphics(SDL_Renderer *renderer, world_t *world,textures_t *texture
  
 // Fonction qui nettoie le jeu: nettoyage de la partie graphique (SDL), nettoyage des textures, nettoyage des données
 void clean(SDL_Window *window, SDL_Renderer * renderer, textures_t *textures, world_t * world){
-    clean_data(world);
     clean_textures(textures);
     clean_sdl(renderer,window);
 }
