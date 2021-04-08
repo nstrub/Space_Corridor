@@ -24,12 +24,7 @@
 
 void init_data(world_t * world);
 
-/**
- * \brief fonction qui affiche dans le terminal les coordonées d'un sprite
- * \param sprite le sprite
- */
 
-void print_sprite(sprite_t *sprite);
 
 
 

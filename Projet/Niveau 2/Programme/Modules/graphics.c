@@ -13,11 +13,7 @@
 
 //Les fonctions
 
-//fonction qui affiche dans le terminal les coordonées d'un sprite.
-void print_sprite(sprite_t *sprite){
-    printf("Les coordonnées du sprite x/y sont : %d et %d\n",sprite->x,sprite->y);
-    printf("La hauteur et largeur font : %d et %d\n",sprite->h,sprite->w);
-}
+
 
 
 void init_data(world_t * world){
