@@ -5,8 +5,8 @@ INC = sdl2-light.h
 SRC = main.c Modules/sdl2-light.c Modules/graphics.c Modules/monde.c
 OBJ = $(SRC:%.c=%.o)
 
-INC_TEST = Modules/graphics.h Modules/monde.h Modules/param.h
-SRC_TEST = Tests/tests.c
+INC_TEST = Modules/param.h  Modules/monde.h
+SRC_TEST = Tests/tests.c  Modules/monde.c
 OBJ_TEST = $(SRC_TEST:%.c=%.o)
 
 PROG = spacecorridor

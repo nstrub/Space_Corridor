@@ -12,35 +12,15 @@
 #include "param.h"
 
 
-
-
-void init_data(world_t * world){
-    //initialisation du vaisseau dans le monde
-    world->vaisseau.x = SCREEN_WIDTH/2 - SHIP_SIZE/2;
-    world->vaisseau.y = SCREEN_HEIGHT - SHIP_SIZE*2;
-    world->vaisseau.h = SHIP_SIZE;
-    world->vaisseau.w = SHIP_SIZE;
-
-    //Initialisation de la ligne d'arrivée
-    world->arrivee.x = 0;
-    world->arrivee.y = FINISH_LINE_HEIGHT;
-    //world->arrivee.h = FINISH_LINE_HEIGHT; surment pas utile
-    //world->arrivee.w = SCREEN_WIDTH;
-
-    print_sprite(&world->vaisseau);
-    //on n'est pas à la fin du jeu
-    world->gameover = 0;
-
-    // Vitesse de base
-    world->vitesse = INITIAL_SPEED;
-
-    // Mur et meteores
-    world->mur.x = SCREEN_WIDTH/2 - METEORITE_SIZE/2*3;
-    world->mur.y = SCREEN_HEIGHT/2 - METEORITE_SIZE/2*7;
-
-
-    
+//La fonction nettoie les données du monde
+void init_sprite(sprite_t *sprite, int x, int y, int w, int h){
+    sprite->x = x;
+    sprite->y = y;
+    sprite->w = w;
+    sprite->h = h;
 }
+
+
 
 
 

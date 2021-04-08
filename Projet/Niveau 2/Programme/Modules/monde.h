@@ -15,12 +15,16 @@
 
 
 
+
+
 /**
- * \brief La fonction initialise les données du monde du jeu
- * \param world les données du monde
+ * \brief La fonction nettoie les données du monde
+ * \param *sprite l'adresse de l'enregistrement de type sprite_t
+ * \param int x, int y les coordonnées du sprite
+ * \param  int w, int h la largeur et hauteur du sprite
  */
 
-void init_data(world_t * world);
+void init_sprite(sprite_t *sprite, int x, int y, int w, int h);
 
 
 /**

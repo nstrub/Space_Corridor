@@ -8,7 +8,6 @@
 
 #include "../Modules/monde.h"
 #include "../Modules/param.h"
-#include "../Modules/graphics.h"
 
 
 void test_init_sprite_param(sprite_t *sprite, int x, int y, int w, int h){
