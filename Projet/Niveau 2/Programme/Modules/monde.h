@@ -75,9 +75,9 @@ int sprites_collide(sprite_t *sp1, sprite_t *sp2);
 /**
  * @brief Fonction qui met la vitesse du vaisseau à 0 en cas de contact entre deux sprites
  * 
- * @param sp1 
- * @param sp2 
- * @param world 
+ * @param sp1 premier sprite de type sprite_t
+ * @param sp2 deuxième sprite de type sprite_t
+ * @param world les données du monde
  */
 void handle_sprite_collision(sprite_t *sp1, sprite_t *sp2, world_t *world);
 
