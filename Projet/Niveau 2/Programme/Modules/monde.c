@@ -58,3 +58,9 @@ int sprites_collide(sprite_t *sp1, sprite_t *sp2){
         return 0;
     }
 }
+
+void handle_sprite_collision(sprite_t *sp1, sprite_t *sp2, world_t *world){
+    if(sprites_collide(sp1,sp2)){
+        world->vitesse = 0;
+    }
+}

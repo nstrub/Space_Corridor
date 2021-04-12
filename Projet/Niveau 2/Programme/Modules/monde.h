@@ -72,6 +72,15 @@ void handle_events(SDL_Event *event,world_t *world);
 int sprites_collide(sprite_t *sp1, sprite_t *sp2);
 
 
+/**
+ * @brief Fonction qui met la vitesse du vaisseau à 0 en cas de contact entre deux sprites
+ * 
+ * @param sp1 
+ * @param sp2 
+ * @param world 
+ */
+void handle_sprite_collision(sprite_t *sp1, sprite_t *sp2, world_t *world);
+
 
 
 
