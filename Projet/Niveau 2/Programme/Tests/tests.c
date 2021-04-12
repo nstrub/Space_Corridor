@@ -17,6 +17,7 @@ void test_init_sprite_param(sprite_t *sprite, int x, int y, int w, int h){
 }
 
 void test_init_sprite(){
+    printf("------test_init_sprite------\n\n");
     sprite_t sprite;
     test_init_sprite_param(&sprite,0,0,0,0);
     printf("\n\n");
@@ -27,7 +28,7 @@ void test_init_sprite(){
     test_init_sprite_param(&sprite,100,0,75,25);
     printf("\n\n");
     test_init_sprite_param(&sprite,100,100,SHIP_SIZE,SHIP_SIZE);
-    printf("\n\n");
+    printf("\n\n\n\n");
 }
 
 void param_depacement_droite(world_t *monde){
@@ -47,6 +48,7 @@ void param_depacement_gauche(world_t *monde){
 
 
 void test_depacement_droite(){
+    printf("------test_depacement_droite------\n\n");
     world_t monde;
     init_sprite(&monde.vaisseau, 100, 100, SHIP_SIZE, SHIP_SIZE);
     param_depacement_droite(&monde);
@@ -54,6 +56,7 @@ void test_depacement_droite(){
     param_depacement_droite(&monde);
     init_sprite(&monde.vaisseau, 295, 100, SHIP_SIZE, SHIP_SIZE);
     param_depacement_droite(&monde);
+    printf("\n\n\n\n");
 }
 
 
@@ -76,6 +79,7 @@ void test_depacement_gauche(){
 
 
 int main( int argc, char* args[] ){
+    printf("\n\n------------EXECUTION DE TESTS------------\n            __________________\n\n\n");
     test_init_sprite();
     test_depacement_droite();
     test_depacement_gauche();
