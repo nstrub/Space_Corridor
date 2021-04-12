@@ -14,14 +14,26 @@
 #include "param.h"
 #include "vaisseau.h"
 
+/**
+ * @brief Fonction qui replace le vaisseau lorsqu'il sort de l'écran à gauche
+ * 
+ * @param monde 
+ */
+void depacement_gauche(world_t *monde);
 
-// A DEFINIR ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-void depacement_gauche(sprite_t *sprite);
-
+/**
+ * @brief Fonction qui replace le vaisseau lorsqu'il sort de l'écran à gauche
+ * 
+ * @param monde 
+ */
 void depacement_droite(world_t *monde);
 
-
-
+/**
+ * @brief Fonction qui replace le vaisseau lorsqu'il sort de l'écran (gère les deux côtés)
+ * 
+ * @param monde 
+ */
+void depacement(world_t *monde);
 
 
 
