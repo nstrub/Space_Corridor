@@ -7,6 +7,13 @@
  */
 
 
+#ifndef HANDLE_EVENT_H
+#define HANDLE_EVENT_H
+
+#include "param.h"
+#include "sdl2-light.h"
+#include "monde.h"
+
 /**
  * @brief Fonction visant à géré tout les évènements ce déroulant lors de la boucle de jeu
  * 
@@ -15,3 +22,5 @@
  */
 
 void handle_events(SDL_Event *event,world_t *world);
+
+#endif

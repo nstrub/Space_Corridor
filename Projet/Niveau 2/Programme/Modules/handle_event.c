@@ -8,8 +8,8 @@
  */
 
 #include "handle_event.h"
-#include "sdl2-light.h"
-#include "monde.h"
+
+
 
 
 void handle_events(SDL_Event *event,world_t *world){
