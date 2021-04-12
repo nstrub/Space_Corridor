@@ -9,6 +9,7 @@
 
 #include "graphics.h"
 #include "monde.h"
+#include "vaisseau.h"
 #include "param.h"
 
 
@@ -40,36 +41,10 @@ void update_data(world_t *world){
 
     // Déplacement du mur de météore
     world->mur.y += world->vitesse ;
+
+    //Sorite de jeu du vaisseau
+    depacement(world);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

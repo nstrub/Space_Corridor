@@ -11,6 +11,7 @@
 #include "Modules/param.h"
 #include "Modules/graphics.h"
 #include "Modules/monde.h"
+#include "Modules/vaisseau.h"
 
 
 
