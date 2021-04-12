@@ -19,7 +19,7 @@
 
 
 void depacement_droite(world_t *monde){
-    if(monde->vaisseau.x + SHIP_SIZE/2 > SCREEN_WIDTH){
+    if(monde->vaisseau.x + SHIP_SIZE/2 > SCREEN_WIDTH){//On rentre dès qu'un morceau du vaisseau sort de l'écran
         printf("boucle prise");
         monde->vaisseau.x = SCREEN_WIDTH - SHIP_SIZE/2;
     }
