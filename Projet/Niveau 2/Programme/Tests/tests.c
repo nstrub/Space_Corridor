@@ -38,6 +38,14 @@ void param_depacement_droite(world_t *monde){
 }
 
 
+void param_depacement_gauche(world_t *monde){
+    printf("le sprite ce trouve en x = %d\nSa largeur est w = %d\nla largeur de l'écran est sw = %d\n", monde->vaisseau.x, monde->vaisseau.x, SCREEN_WIDTH);
+    depacement_gauche(monde);
+    printf("La nouvelle coordonnée du vaisseau est x = %d\n\n", monde->vaisseau.x);
+        
+}
+
+
 void test_depacement_droite(){
     world_t monde;
     init_sprite(&monde.vaisseau, 100, 100, SHIP_SIZE, SHIP_SIZE);
@@ -49,6 +57,15 @@ void test_depacement_droite(){
 }
 
 
+void test_depacement_gauche(){
+    world_t monde;
+    init_sprite(&monde.vaisseau, 0, 100, SHIP_SIZE, SHIP_SIZE);
+    param_depacement_gauche(&monde);
+    init_sprite(&monde.vaisseau, -1, 100, SHIP_SIZE, SHIP_SIZE);
+    param_depacement_gauche(&monde);
+    init_sprite(&monde.vaisseau, 10, 100, SHIP_SIZE, SHIP_SIZE);
+    param_depacement_gauche(&monde);
+}
 
 
 
@@ -61,5 +78,6 @@ void test_depacement_droite(){
 int main( int argc, char* args[] ){
     test_init_sprite();
     test_depacement_droite();
+    test_depacement_gauche();
     return 0;
 }

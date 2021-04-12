@@ -12,10 +12,8 @@
 #include "vaisseau.h"
 
 
-void depacement_gauche(world_t *world)
-{
-    if (world->vaisseau.x + SHIP_SIZE/2 < 0)
-    {
+void depacement_gauche(world_t *world){
+    if (world->vaisseau.x - SHIP_SIZE/2 < 0){
         world->vaisseau.x = 0 + SHIP_SIZE/2;
     }
 }
