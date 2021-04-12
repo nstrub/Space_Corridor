@@ -11,10 +11,14 @@
 #include "param.h"
 #include "vaisseau.h"
 
-//void depacement_gauche(sprite_t *sprite)
-//{
 
-//}
+void depacement_gauche(world_t *world)
+{
+    if (world->vaisseau.x + SHIP_SIZE/2 < 0)
+    {
+        world->vaisseau.x = 0 + SHIP_SIZE/2;
+    }
+}
 
 
 
@@ -27,5 +31,5 @@ void depacement_droite(world_t *monde){
 
 void depacement(world_t *monde){
     depacement_droite(&monde);
-    //depacement_gauche(sprite);
+    depacement_gauche(&monde);
 }
