@@ -9,13 +9,16 @@
 #ifndef VAISSEAU_H
 #define VAISSEAU_H
 
+#include "graphics.h"
+#include "monde.h"
 #include "param.h"
+#include "vaisseau.h"
 
 
 // A DEFINIR ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void depacement_gauche(sprite_t *sprite);
 
-void depacement_droite(sprite_t *sprite);
+void depacement_droite(world_t *monde);
 
 
 

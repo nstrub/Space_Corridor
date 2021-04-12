@@ -8,6 +8,7 @@
 
 #include "../Modules/monde.h"
 #include "../Modules/param.h"
+#include "../Modules/vaisseau.h"
 
 
 void test_init_sprite_param(sprite_t *sprite, int x, int y, int w, int h){
@@ -29,7 +30,36 @@ void test_init_sprite(){
     printf("\n\n");
 }
 
+void param_depacement_droite(world_t *monde){
+    printf("le sprite ce trouve en x = %d\nSa largeur est w = %d\nla largeur de l'écran est sw = %d\n", monde->vaisseau.x, monde->vaisseau.x, SCREEN_WIDTH);
+    depacement_droite(monde);
+    printf("La nouvelle coordonnée du vaisseau est x = %d\n\n", monde->vaisseau.x);
+        
+}
+
+
+void test_depacement_droite(){
+    world_t monde;
+    init_sprite(&monde.vaisseau, 100, 100, SHIP_SIZE, SHIP_SIZE);
+    param_depacement_droite(&monde);
+    init_sprite(&monde.vaisseau, 301, 100, SHIP_SIZE, SHIP_SIZE);
+    param_depacement_droite(&monde);
+    init_sprite(&monde.vaisseau, 295, 100, SHIP_SIZE, SHIP_SIZE);
+    param_depacement_droite(&monde);
+}
+
+
+
+
+
+
+
+
+
+
+
 int main( int argc, char* args[] ){
     test_init_sprite();
+    test_depacement_droite();
     return 0;
 }
