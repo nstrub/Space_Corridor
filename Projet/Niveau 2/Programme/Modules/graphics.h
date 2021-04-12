@@ -17,14 +17,6 @@
 
 // PROTOTYPES DES FONCTIONS EN RAPPORT AVEC LES GRAPHIQUES DU JEUX //
 
-/**
- * \brief La fonction initialise les données du monde du jeu
- * \param world les données du monde
- */
-
-void init_data(world_t * world);
-
-
 
 
 
