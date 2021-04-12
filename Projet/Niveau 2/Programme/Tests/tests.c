@@ -62,7 +62,7 @@ void test_depacement_droite(){
 
 void test_depacement_gauche(){
     world_t monde;
-    init_sprite(&monde.vaisseau, 0, 100, SHIP_SIZE, SHIP_SIZE);
+    init_sprite(&monde.vaisseau, 100, 100, SHIP_SIZE, SHIP_SIZE);
     param_depacement_gauche(&monde);
     init_sprite(&monde.vaisseau, -1, 100, SHIP_SIZE, SHIP_SIZE);
     param_depacement_gauche(&monde);
