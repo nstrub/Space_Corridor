@@ -50,10 +50,16 @@ void param_depacement_gauche(world_t *monde){
 void test_depacement_droite(){
     printf("------test_depacement_droite------\n\n");
     world_t monde;
+    
+    // On teste pour une utilisation normale
     init_sprite(&monde.vaisseau, 100, 100, SHIP_SIZE, SHIP_SIZE);
     param_depacement_droite(&monde);
+
+    // On teste pour le vaisseau en dehors de la zone de jeu
     init_sprite(&monde.vaisseau, 301, 100, SHIP_SIZE, SHIP_SIZE);
     param_depacement_droite(&monde);
+
+    // On teste pour le vaisseau entre la zone de jeu et la non zone de jeu
     init_sprite(&monde.vaisseau, 295, 100, SHIP_SIZE, SHIP_SIZE);
     param_depacement_droite(&monde);
     printf("\n\n\n\n");

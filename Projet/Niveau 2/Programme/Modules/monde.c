@@ -99,3 +99,8 @@ void handle_events(SDL_Event *event,world_t *world){
         }
     }
 }
+
+
+void sprites_collide(sprite_t *sp1, sprite_t *sp2){
+    
+}

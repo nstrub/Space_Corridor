@@ -63,6 +63,13 @@ void update_data(world_t *world);
 void handle_events(SDL_Event *event,world_t *world);
 
 
+/**
+ * @brief gère la collision de sprite entre sprites
+ * 
+ * @param sp1 premier sprite de type sprite_t
+ * @param sp2 deuxième sprite de type sprite_t
+ */
+void sprites_collide(sprite_t *sp1, sprite_t *sp2);
 
 
 
