@@ -33,6 +33,9 @@ void init_data(world_t * world){
     //on n'est pas à la fin du jeu
     world->gameover = 0;
 
+    //Le sprite est affiché de base
+    world->desappear = 0;
+
     // Vitesse de base
     world->vitesse = INITIAL_SPEED;
 
@@ -86,12 +89,17 @@ void refresh_graphics(SDL_Renderer *renderer, world_t *world,textures_t *texture
     
     //on vide le renderer
     clear_renderer(renderer);
-    
+
     //application des textures dans le renderer
     apply_background(renderer, textures->background);
 
-    apply_sprite(renderer, textures->vaisseau, &world->vaisseau);
-    apply_sprite(renderer, textures->arrivee, &world->arrivee);
+    // Le vaisseau est afficher si rentré ici
+    if(world->desappear != 1){
+        apply_sprite(renderer, textures->vaisseau, &world->vaisseau);   
+    }
+    
+    //affichage de la ligne d'arrivé
+    apply_sprite(renderer, textures->arrivee, &world->arrivee);         
 
     //Mur de météorites
     for(int y = 0; y < 7; y++){
