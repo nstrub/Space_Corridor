@@ -42,21 +42,43 @@ void update_data(world_t *world){
     // Déplacement du mur de météore
     world->mur.y += world->vitesse ;
 
-    //Sorite de jeu du vaisseau
+    //Sortie de jeu du vaisseau
     depacement(world);
+
+    //Collisions
+    handle_sprite_collision(&world->arrivee, &world->vaisseau, world);
+    handle_sprite_collision(&world->mur, &world->vaisseau, world);
+    
+
+
 }
 
+int sprites_collide(sprite_t *sp1, sprite_t *sp2){
+    int x1,x2,y1,y2,w1,w2,h1,h2,col_x = 0,col_y = 0;
+    x1=sp1->x;
+    y1=sp1->y;
+    w1=sp1->w;
+    h1=sp1->h;
+    x2=sp2->x;
+    y2=sp2->y;
+    w2=sp2->w;
+    h2=sp2->h;
+    
+    if ((x2 > x1 && x2 < x1 + w1) || (x2 + w2 > x1 && x2 + w2 < x1 + w1))
+    {
+        col_x = 1;
+    }
 
-
-
-
-int sprites_collide(sprite_t *sp1, sprite_t *sp2){ 
-    if(abs(sp1->x-sp2->x) <= (sp1->w+sp2->w) /2 && abs(sp1->y-sp2->y) <= (sp1->h+sp2->h)/2){
+    if ((y2 > y1 && y2 < y1 + h1) || (y2 + h2 > y1 && y2 + h2 < y1 + h1))
+    {
+        col_y = 1;
+    }
+    
+    if (col_x && col_y)
+    {
         return 1;
     }
-    else{
-        return 0;
-    }
+    return 0;
 }
 
 void handle_sprite_collision(sprite_t *sp1, sprite_t *sp2, world_t *world){

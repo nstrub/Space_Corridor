@@ -15,7 +15,7 @@
 
 
 
-
+//mettre dans monde    ------------------------------------------------------
 void init_data(world_t * world){
     //initialisation du vaisseau dans le monde
     world->vaisseau.x = SCREEN_WIDTH/2 - SHIP_SIZE/2;
@@ -26,8 +26,8 @@ void init_data(world_t * world){
     //Initialisation de la ligne d'arrivée
     world->arrivee.x = 0;
     world->arrivee.y = FINISH_LINE_HEIGHT;
-    //world->arrivee.h = FINISH_LINE_HEIGHT; surment pas utile
-    //world->arrivee.w = SCREEN_WIDTH;
+    world->arrivee.h = FINISH_LINE_HEIGHT;
+    world->arrivee.w = SCREEN_WIDTH;
 
     print_sprite(&world->vaisseau);
     //on n'est pas à la fin du jeu
@@ -37,8 +37,11 @@ void init_data(world_t * world){
     world->vitesse = INITIAL_SPEED;
 
     // Mur et meteores
-    world->mur.x = SCREEN_WIDTH/2 - METEORITE_SIZE/2*3;
-    world->mur.y = SCREEN_HEIGHT/2 - METEORITE_SIZE/2*7;
+    world->mur.x = SCREEN_WIDTH/2 - 3*METEORITE_SIZE/2;
+    world->mur.y = SCREEN_HEIGHT/2 - 7*METEORITE_SIZE/2;
+    world->mur.h = METEORITE_SIZE  * 7;
+    world->mur.w = METEORITE_SIZE * 3;
+    
 
 
     
@@ -115,6 +118,3 @@ void init(SDL_Window **window, SDL_Renderer ** renderer, textures_t *textures, w
     init_data(world);
     init_textures(*renderer,textures);
 }
-
-
-//
