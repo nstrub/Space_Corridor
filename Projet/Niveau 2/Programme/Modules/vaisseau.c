@@ -13,8 +13,12 @@
 
 
 void depacement_gauche(world_t *world){
+<<<<<<< HEAD
     if (world->vaisseau.x + SHIP_SIZE/2 < 0)
     {
+=======
+    if (world->vaisseau.x - SHIP_SIZE/2 < 0){
+>>>>>>> 68db33cc8870ccb41df898f792f219ebac7dadd8
         world->vaisseau.x = 0 + SHIP_SIZE/2;
     }
 }
