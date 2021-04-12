@@ -50,7 +50,7 @@ void param_depacement_gauche(world_t *monde){
 void test_depacement_droite(){
     printf("------test_depacement_droite------\n\n");
     world_t monde;
-    
+
     // On teste pour une utilisation normale
     init_sprite(&monde.vaisseau, 100, 100, SHIP_SIZE, SHIP_SIZE);
     param_depacement_droite(&monde);
@@ -67,6 +67,7 @@ void test_depacement_droite(){
 
 
 void test_depacement_gauche(){
+    printf("------test_depacement_gauche------\n\n");
     world_t monde;
     init_sprite(&monde.vaisseau, 100, 100, SHIP_SIZE, SHIP_SIZE);
     param_depacement_gauche(&monde);
@@ -74,15 +75,44 @@ void test_depacement_gauche(){
     param_depacement_gauche(&monde);
     init_sprite(&monde.vaisseau, 10, 100, SHIP_SIZE, SHIP_SIZE);
     param_depacement_gauche(&monde);
+    printf("\n\n\n\n");
 }
 
 
 void param_sprite_collide(sprite_t *sp1, sprite_t *sp2){
-
+    printf("Pour les spirtes sp1 : \n");
+    print_sprite(sp1);
+    printf("\nEt sp2 :\n");
+    print_sprite(sp2);
+    printf("\nLa fonction renvoie : %d\n\n", sprites_collide(sp1, sp2));
 }
 
 void test_sprite_collide(){
+    printf("------test_sprite_collide------\n\n");
+    sprite_t spr1, spr2;
+    // S'ils ne se touchent pas.
+    init_sprite( &spr1 , 0 , 0, 10 , 10);
+    init_sprite( &spr2 , 100 , 100, 10 , 10);
+    param_sprite_collide(&spr1 , &spr2);
+    printf("\n\n\n");
 
+    // S'ils se touchent sur les côtés
+    init_sprite( &spr1 , 0 , 0, 10 , 10);
+    init_sprite( &spr2 , 8 , 1, 9 , 9);
+    param_sprite_collide(&spr1 , &spr2);
+    printf("\n\n\n");
+
+    // s'ils se touchent par le haut et bas
+    init_sprite( &spr1 , 0 , 0, 10 , 10);
+    init_sprite( &spr2 , 1 , 8, 9 , 9);
+    param_sprite_collide(&spr1 , &spr2);
+    printf("\n\n\n");
+
+    // s'ils se frôlent 
+    init_sprite( &spr1 , 0 , 0, 10 , 10);
+    init_sprite( &spr2 , 10 , 10, 9 , 9);
+    param_sprite_collide(&spr1 , &spr2);
+    printf("\n\n\n\n");
 }
 
 
@@ -95,5 +125,6 @@ int main( int argc, char* args[] ){
     test_init_sprite();
     test_depacement_droite();
     test_depacement_gauche();
+    test_sprite_collide();
     return 0;
 }
