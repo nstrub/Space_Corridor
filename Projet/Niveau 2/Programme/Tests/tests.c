@@ -77,7 +77,13 @@ void test_depacement_gauche(){
 }
 
 
+void param_sprite_collide(sprite_t *sp1, sprite_t *sp2){
 
+}
+
+void test_sprite_collide(){
+
+}
 
 
 
