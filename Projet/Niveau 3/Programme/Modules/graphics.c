@@ -66,6 +66,8 @@ void refresh_graphics(SDL_Renderer *renderer, world_t *world,textures_t *texture
     apply_sprite(renderer, textures->arrivee, &world->arrivee);         
 
     //Mur de météorites
+
+    //Fonction à faire ===========================================================================================================================
     for(int y = 0; y < 7; y++){
         for(int x = 0; x < 3; x ++){
             apply_texture(textures->meteorite, renderer, world->mur.x + x * METEORITE_SIZE , world->mur.y + y * METEORITE_SIZE);
