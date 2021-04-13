@@ -18,6 +18,8 @@
 // PROTOTYPES DES FONCTIONS EN RAPPORT AVEC LES GRAPHIQUES DU JEUX //
 
 
+
+
 /**
  * \brief La fonction nettoie les textures
  * \param textures les textures
