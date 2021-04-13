@@ -38,6 +38,12 @@ void print_sprite(sprite_t *sprite);
 
 void init_sprite(sprite_t *sprite, int x, int y, int w, int h);
 
+/**
+ * @brief Fonction qui initialise les murs dans le monde afin de faire un parcours
+ * 
+ * @param world les données du monde
+ */
+void init_walls(world_t *world);
 
 /**
  * \brief La fonction nettoie les données du monde
@@ -87,7 +93,6 @@ int sprites_collide(sprite_t *sp1, sprite_t *sp2);
  * @param world les données du monde
  */
 void handle_sprite_collision(sprite_t *sp1, sprite_t *sp2, world_t *world);
-
 
 
 
