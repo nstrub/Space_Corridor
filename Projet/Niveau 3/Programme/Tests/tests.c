@@ -160,22 +160,24 @@ void test_handle_sprite_collision(){
     printf("\n\n\n\n");
 }
 
-param_init_walls(world_t monde){
+void param_init_walls(world_t monde){
     for(int i = 0; i < MURS_NBR; i++){
         printf("le tableau %d :\n", i );
-        print_sprite(&world.murs[i]);
+        print_sprite(&monde.murs[i]);
+        printf("\n\n\n");
     }
 
 }
 
 
-test_init_walls(){
+void test_init_walls(){
     printf("------test_init_walls------\n\n");
     // Initialisation
     world_t monde;
+    init_walls(&monde);
 
     //On vérifie qu'ils affiche ce que l'on veut (à comparer avec le tableau attendu).
-    param_init_walls(init_walls(monde));
+    param_init_walls(monde);
 
     printf("\n\n\n\n");
 }
@@ -193,5 +195,6 @@ int main( int argc, char* args[] ){
     test_depacement_gauche();
     test_sprite_collide();
     test_handle_sprite_collision();
+    test_init_walls();
     return 0;
 }
