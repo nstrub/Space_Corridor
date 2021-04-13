@@ -15,39 +15,6 @@
 
 
 
-//mettre dans monde    ------------------------------------------------------
-void init_data(world_t * world){
-    //initialisation du vaisseau dans le monde
-    world->vaisseau.x = SCREEN_WIDTH/2 - SHIP_SIZE/2;
-    world->vaisseau.y = SCREEN_HEIGHT - SHIP_SIZE*2;
-    world->vaisseau.h = SHIP_SIZE;
-    world->vaisseau.w = SHIP_SIZE;
-
-    //Initialisation de la ligne d'arrivée
-    world->arrivee.x = 0;
-    world->arrivee.y = FINISH_LINE_HEIGHT;
-    world->arrivee.h = FINISH_LINE_HEIGHT;
-    world->arrivee.w = SCREEN_WIDTH;
-
-    print_sprite(&world->vaisseau);
-    //on n'est pas à la fin du jeu
-    world->gameover = 0;
-
-    // Vitesse de base
-    world->vitesse = INITIAL_SPEED;
-
-    // Mur et meteores
-    world->mur.x = SCREEN_WIDTH/2 - 3*METEORITE_SIZE/2;
-    world->mur.y = SCREEN_HEIGHT/2 - 7*METEORITE_SIZE/2;
-    world->mur.h = METEORITE_SIZE  * 7;
-    world->mur.w = METEORITE_SIZE * 3;
-    
-
-
-    
-}
-
-
 //La fonction nettoie les textures
 void clean_textures(textures_t *textures){
     clean_texture(textures->background);
@@ -86,12 +53,17 @@ void refresh_graphics(SDL_Renderer *renderer, world_t *world,textures_t *texture
     
     //on vide le renderer
     clear_renderer(renderer);
-    
+
     //application des textures dans le renderer
     apply_background(renderer, textures->background);
 
-    apply_sprite(renderer, textures->vaisseau, &world->vaisseau);
-    apply_sprite(renderer, textures->arrivee, &world->arrivee);
+    // Le vaisseau est afficher si rentré ici
+    if(world->desappear != 1){
+        apply_sprite(renderer, textures->vaisseau, &world->vaisseau);   
+    }
+    
+    //affichage de la ligne d'arrivé
+    apply_sprite(renderer, textures->arrivee, &world->arrivee);         
 
     //Mur de météorites
     for(int y = 0; y < 7; y++){

@@ -41,9 +41,10 @@ struct world_s{
     sprite_t vaisseau; /*! < Ajout d'un vaisseau de type sprite_t au monde */
     sprite_t arrivee; /*! < Ajout de la ligne d'arrivée de type sprite_t au monde */
     sprite_t mur; /*! <Ajout du mur de meteorite de type sprite_t au monde */
-    
+
     int gameover; /*!< Champ indiquant si l'on est à la fin du jeu */
     int vitesse; /*!< Vitesse de déplacement de base des strucures*/
+    int desappear; /*!< Variable qui sert à afficher le sprite du vaisseau*/
 
 };
 
