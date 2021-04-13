@@ -57,6 +57,14 @@ void apply_sprite(SDL_Renderer *renderer, SDL_Texture *texture, sprite_t *sprite
 
 
 /**
+ * @brief Fonction qui crée un mur de metoerite (de 7X3 pour l'instant)
+ * @param renderer le renderer
+ * @param world les données du monde
+ * @param textures la texture liée au fond
+ */
+void crea_walls(SDL_Renderer *renderer, world_t *world,textures_t *textures, int hauteur, int largeur);
+
+/**
  * \brief La fonction rafraichit l'écran en fonction de l'état des données du monde
  * \param renderer le renderer lié à l'écran de jeu
  * \param world les données du monde
