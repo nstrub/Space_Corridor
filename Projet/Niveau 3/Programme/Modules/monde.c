@@ -27,7 +27,7 @@ void init_data(world_t * world){
     init_sprite(&world->mur,SCREEN_WIDTH/2 - 3*METEORITE_SIZE/2, SCREEN_HEIGHT/2 - 7*METEORITE_SIZE/2, METEORITE_SIZE * 3, METEORITE_SIZE  * 7 );
 
     print_sprite(&world->vaisseau);
-    
+
     //on n'est pas à la fin du jeu
     world->gameover = 0;
 
@@ -36,6 +36,8 @@ void init_data(world_t * world){
 
     // Vitesse de base
     world->vitesse = INITIAL_SPEED;
+
+    init_walls(world);
 
     
     
@@ -85,6 +87,8 @@ void update_data(world_t *world){
     // Déplacement du mur de météore
     world->mur.y += world->vitesse ;
 
+    update_walls(world);
+
     //Sortie de jeu du vaisseau
     depacement(world);
 
@@ -126,5 +130,11 @@ void handle_sprite_collision(sprite_t *sp1, sprite_t *sp2, world_t *world){
     if(sprites_collide(sp1,sp2)){
         world->vitesse = 0;             //Le vaisseau (sp1) entre en conllision avec sp2, la vitesse devient nulle
         world->desappear = 1;             //Le vaisseau (sp1) entre en conllision avec sp2, le vaisseau disparait
+    }
+}
+
+void update_walls(world_t *world){
+    for(int i = 0; i < MURS_NBR; i++){
+        world->murs[i].y += world->vitesse;
     }
 }

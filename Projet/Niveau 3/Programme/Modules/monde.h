@@ -96,9 +96,12 @@ void handle_sprite_collision(sprite_t *sp1, sprite_t *sp2, world_t *world);
 
 
 
-
-
-
+/**
+ * @brief Fonction qui met à jour les murs en fonctions de la vistesse du monde..
+ * 
+ * @param world Les données du monde
+ */
+void update_walls(world_t *world);
 
 
 

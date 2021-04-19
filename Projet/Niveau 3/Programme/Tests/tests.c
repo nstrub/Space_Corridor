@@ -182,6 +182,35 @@ void test_init_walls(){
     printf("\n\n\n\n");
 }
 
+void param_update_walls(world_t *monde){
+    printf("\n\n\nLa vitesse du monde est de :  %d\n\n\n\nVoici les données de deux sprites :\n\n", monde->vitesse);
+    print_sprite(&monde->murs[1]);
+    printf("\n\n");
+    print_sprite(&monde->murs[2]);
+    for(int n = 0; n < 3; n++){
+        update_walls(monde);
+        printf("\n\n\n\n\nAprès avoir appliqué %d fois update_walls :\n\n", n+1);
+        print_sprite(&monde->murs[1]);
+        printf("\n\n");
+        print_sprite(&monde->murs[2]);
+    }
+}
+
+void test_update_walls(){
+
+    printf("------test_update_walls------\n\n");
+
+    // Initialisation
+    world_t monde;
+    monde.vitesse = 5;
+    init_sprite(&monde.murs[0], 48,0,96,192);
+    init_sprite(&monde.murs[1],252,58,96,192);
+    
+    param_update_walls(&monde);
+    printf("\n\n\n\n");
+    
+}
+
 
 
 
@@ -196,5 +225,7 @@ int main( int argc, char* args[] ){
     test_sprite_collide();
     test_handle_sprite_collision();
     test_init_walls();
+    test_update_walls();
     return 0;
 }
+
