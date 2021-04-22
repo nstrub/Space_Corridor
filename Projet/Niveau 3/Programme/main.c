@@ -43,16 +43,19 @@ int main( int argc, char* args[] )
     SDL_Renderer *renderer;
     SDL_Window *window;
 
+    int temps_ecoule = 0;
     //initialisation du jeu
     init(&window,&renderer,&textures,&world);
     
     while(!is_game_over(&world)){ //tant que le jeu n'est pas fini
+        //Le temps s'écoule
+        temps_ecoule = SDL_GetTicks();
         
         //gestion des évènements
         handle_events(&event,&world);
         
         //mise à jour des données liée à la physique du monde
-        update_data(&world);
+        update_data(&world,temps_ecoule);
         
         //rafraichissement de l'écran
         refresh_graphics(renderer,&world,&textures);

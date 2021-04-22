@@ -64,7 +64,7 @@ int is_game_over(world_t *world);
  * \param les données du monde
  */
 
-void update_data(world_t *world);
+void update_data(world_t *world, int temps);
 
 
 /**
@@ -112,7 +112,7 @@ void update_walls(world_t *world);
  * @param sp2 deuxième sprite de type sprite_t
  * @param world les données du monde
  */
-void finish_line(sprite_t *sp1, sprite_t *sp2, world_t *world);
+void finish_line(sprite_t *sp1, sprite_t *sp2, world_t *world, int temps);
 
 
 /**
