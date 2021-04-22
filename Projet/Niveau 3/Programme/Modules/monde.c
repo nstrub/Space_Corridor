@@ -24,7 +24,7 @@ void init_data(world_t * world){
     init_sprite(&world->arrivee, 0, FINISH_LINE_HEIGHT, SCREEN_WIDTH, FINISH_LINE_HEIGHT);
  
     // Mur et meteores
-    init_sprite(&world->mur,SCREEN_WIDTH/2 - 3*METEORITE_SIZE/2, SCREEN_HEIGHT/2 - 7*METEORITE_SIZE/2, METEORITE_SIZE * 3, METEORITE_SIZE  * 7 );
+    //init_sprite(&world->mur,SCREEN_WIDTH/2 - 3*METEORITE_SIZE/2, SCREEN_HEIGHT/2 - 7*METEORITE_SIZE/2, METEORITE_SIZE * 3, METEORITE_SIZE  * 7 );
 
     print_sprite(&world->vaisseau);
 
@@ -93,8 +93,9 @@ void update_data(world_t *world){
     depacement(world);
 
     //Collisions
-    handle_sprite_collision(&world->arrivee, &world->vaisseau, world);
+    finish_line(&world->arrivee, &world->vaisseau, world);
     handle_sprite_collision(&world->mur, &world->vaisseau, world);
+
 }
 
 int sprites_collide(sprite_t *sp1, sprite_t *sp2){
@@ -136,5 +137,13 @@ void handle_sprite_collision(sprite_t *sp1, sprite_t *sp2, world_t *world){
 void update_walls(world_t *world){
     for(int i = 0; i < MURS_NBR; i++){
         world->murs[i].y += world->vitesse;
+    }
+}
+
+void finish_line(sprite_t *sp1, sprite_t *sp2, world_t *world){
+    if(sprites_collide(sp1,sp2)){// Le vaisseau atteint la ligne d'arrivée
+        world->vitesse = 0;             //la vitesse devient nulle
+        world->desappear = 1;             //le vaisseau disparait
+        world->gameover = 1;            //La partie est finie
     }
 }
