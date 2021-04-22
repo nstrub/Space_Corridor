@@ -80,7 +80,7 @@ int is_game_over(world_t *world){
 
 
 
-void update_data(world_t *world){
+void update_data(world_t *world, int temps){
     // Déplacement de la ligne d'arrivée
     world->arrivee.y += world->vitesse ;
 
@@ -93,7 +93,7 @@ void update_data(world_t *world){
     depacement(world);
 
     //Collisions
-    finish_line(&world->arrivee, &world->vaisseau, world);
+    finish_line(&world->arrivee, &world->vaisseau, world, temps);
     handle_sprite_collision(&world->arrivee, &world->vaisseau, world);
     //handle_sprite_collision(&world->mur, &world->vaisseau, world);
 
@@ -143,11 +143,12 @@ void update_walls(world_t *world){
     }
 }
 
-void finish_line(sprite_t *sp1, sprite_t *sp2, world_t *world){
+void finish_line(sprite_t *sp1, sprite_t *sp2, world_t *world, int temps){
     if(sprites_collide(sp1,sp2)){// Le vaisseau atteint la ligne d'arrivée
         world->vitesse = 0;             //la vitesse devient nulle
         world->desappear = 1;             //le vaisseau disparait
         world->gameover = 1;            //La partie est finie
+        printf("VOUS AVEZ GAGNé(e) EN %d secondes !!! ggwp\n",temps/1000);
     }
 }
 
