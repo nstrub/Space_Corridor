@@ -95,7 +95,9 @@ void update_data(world_t *world){
     //Collisions
     finish_line(&world->arrivee, &world->vaisseau, world);
     handle_sprite_collision(&world->arrivee, &world->vaisseau, world);
-    handle_sprite_collision(&world->mur, &world->vaisseau, world);
+    //handle_sprite_collision(&world->mur, &world->vaisseau, world);
+
+    crash(world);
 
 }
 
@@ -146,5 +148,11 @@ void finish_line(sprite_t *sp1, sprite_t *sp2, world_t *world){
         world->vitesse = 0;             //la vitesse devient nulle
         world->desappear = 1;             //le vaisseau disparait
         world->gameover = 1;            //La partie est finie
+    }
+}
+
+void crash(world_t *world){
+    for(int i = 0; i < MURS_NBR; i++){
+        handle_sprite_collision(&world->murs[i], &world->vaisseau, world);
     }
 }

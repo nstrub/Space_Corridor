@@ -115,5 +115,11 @@ void update_walls(world_t *world);
 void finish_line(sprite_t *sp1, sprite_t *sp2, world_t *world);
 
 
+/**
+ * @brief Fonction qui met fin à la partie en cas de victoire
+ * 
+ * @param world les données du monde
+ */
+void crash(world_t *world);
 
 #endif
