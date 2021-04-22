@@ -21,7 +21,7 @@ void init_data(world_t * world){
     init_sprite(&world->vaisseau, SCREEN_WIDTH/2 - SHIP_SIZE/2, SCREEN_HEIGHT - SHIP_SIZE*2, SHIP_SIZE, SHIP_SIZE);
 
     //Initialisation de la ligne d'arrivée
-    init_sprite(&world->arrivee, 0,FINISH_LINE_HEIGHT, SCREEN_WIDTH, 10);
+    init_sprite(&world->arrivee, 0, -960, SCREEN_WIDTH, FINISH_LINE_HEIGHT);
  
     // Mur et meteores
     //init_sprite(&world->mur,SCREEN_WIDTH/2 - 3*METEORITE_SIZE/2, SCREEN_HEIGHT/2 - 7*METEORITE_SIZE/2, METEORITE_SIZE * 3, METEORITE_SIZE  * 7 );
@@ -94,6 +94,7 @@ void update_data(world_t *world){
 
     //Collisions
     finish_line(&world->arrivee, &world->vaisseau, world);
+    handle_sprite_collision(&world->arrivee, &world->vaisseau, world);
     handle_sprite_collision(&world->mur, &world->vaisseau, world);
 
 }

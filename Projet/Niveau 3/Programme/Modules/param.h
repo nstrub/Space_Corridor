@@ -47,7 +47,7 @@
  */
 
 
-#define FINISH_LINE_HEIGHT -960
+#define FINISH_LINE_HEIGHT 10
 
 
 /**
