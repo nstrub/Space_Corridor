@@ -47,7 +47,7 @@
  */
 
 
-#define FINISH_LINE_HEIGHT 10
+#define FINISH_LINE_HEIGHT -960
 
 
 /**
@@ -69,11 +69,6 @@
  */
 #define MURS_NBR 6
 
-/**
- * @brief Nombre de murs de méréorites dans le jeu
- * 
- */
-#define MURS_NBR 6
 
 // DEFINITION DES STRUCTURES //
 
