@@ -145,14 +145,10 @@ void update_walls(world_t *world){
 
 void finish_line(sprite_t *sp1, sprite_t *sp2, world_t *world, int temps){
     if(sprites_collide(sp1,sp2)){// Le vaisseau atteint la ligne d'arrivée
-<<<<<<< HEAD
         world->vitesse = 0;             //la vitesse devient nulle
         world->desappear = 1;             //le vaisseau disparait
         world->gameover = 1;            //La partie est finie
         printf("VOUS AVEZ GAGNé(e) EN %d secondes !!! ggwp\n",temps/1000);
-=======
-        fin_de_partie(world);
->>>>>>> b10e59e003ded08af0d8c73450e37888c349496e
     }
 }
 
