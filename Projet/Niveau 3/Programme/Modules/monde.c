@@ -59,7 +59,7 @@ void init_sprite(sprite_t *sprite, int x, int y, int w, int h){
 
 // //La fonction qui initialise le parcours de murs
 void init_walls(world_t *world){
-        init_sprite(&world->murs[0], 48,0,96,192);
+        init_sprite(&world->murs[0],48,0,96,192);
         init_sprite(&world->murs[1],252,0,96,192);
         init_sprite(&world->murs[2],16,-352,32,160);
         init_sprite(&world->murs[3],188,-352,224,160);
@@ -132,8 +132,8 @@ int sprites_collide(sprite_t *sp1, sprite_t *sp2){
 void handle_sprite_collision(sprite_t *sp1, sprite_t *sp2, world_t *world){
 
     if(sprites_collide(sp1,sp2)){
-        world->vitesse = 0;             //Le vaisseau (sp1) entre en conllision avec sp2, la vitesse devient nulle
-        world->desappear = 1;             //Le vaisseau (sp1) entre en conllision avec sp2, le vaisseau disparait
+        world->vitesse = 0;            
+        world->desappear = 1;             
     }
 }
 
@@ -145,15 +145,34 @@ void update_walls(world_t *world){
 
 void finish_line(sprite_t *sp1, sprite_t *sp2, world_t *world, int temps){
     if(sprites_collide(sp1,sp2)){// Le vaisseau atteint la ligne d'arrivée
+<<<<<<< HEAD
         world->vitesse = 0;             //la vitesse devient nulle
         world->desappear = 1;             //le vaisseau disparait
         world->gameover = 1;            //La partie est finie
         printf("VOUS AVEZ GAGNé(e) EN %d secondes !!! ggwp\n",temps/1000);
+=======
+        fin_de_partie(world);
+>>>>>>> b10e59e003ded08af0d8c73450e37888c349496e
     }
 }
 
 void crash(world_t *world){
     for(int i = 0; i < MURS_NBR; i++){
-        handle_sprite_collision(&world->murs[i], &world->vaisseau, world);
+        collision_meteore(&world->murs[i], &world->vaisseau, world);
     }
+}
+
+void collision_meteore(sprite_t *sp1, sprite_t *sp2, world_t *world){
+
+    if(sprites_collide(sp1,sp2)){
+        fin_de_partie(world);
+        printf("\n\n\n                   You loose\n\n\n");
+
+    }
+}
+
+void fin_de_partie(world_t *world){
+        world->vitesse = 0;             //la vitesse devient nulle
+        world->desappear = 1;             //le vaisseau disparait
+        world->gameover = 1;            //La partie est finie
 }
