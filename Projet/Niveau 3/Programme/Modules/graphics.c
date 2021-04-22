@@ -48,19 +48,20 @@ void apply_sprite(SDL_Renderer *renderer, SDL_Texture *texture, sprite_t *sprite
 }
 
 
-/// CA COPI SAL 
+//Creation du mur de meteorites
 void crea_wall(textures_t *textures,SDL_Renderer *renderer,world_t *world,int x,int y,int h,int w){
     for (int i = 0; i < h; i++){
         for (int j = 0; j < w; j++){
-            // Applique i*j fois la texture pour créer le mur de météorites
+            // Création du mur de meteorites en appliquand i * j fois la texture
             apply_texture(textures->meteorite, renderer,x+j*METEORITE_SIZE,y+i*METEORITE_SIZE);
         }
     }
 }
 
+//Fonction qui va répéter crea_wall autant de fois qu'il y a de murs pour créé le niveau
 void apply_walls(SDL_Renderer *renderer, textures_t *textures, world_t *world){
     for(int i=0;i<MURS_NBR;i++){
-        // Applique la texture autant de fois qu'il a de murs de météorites
+        // Appel de crea_wall dans la boucle
         crea_wall(textures,renderer,world, world->murs[i].x,world->murs[i].y,world->murs[i].h/METEORITE_SIZE,world->murs[i].w/METEORITE_SIZE);
     }
 }
@@ -85,9 +86,6 @@ void refresh_graphics(SDL_Renderer *renderer, world_t *world,textures_t *texture
 
     //Affichage et applique les collisions des murs
     apply_walls(renderer, textures, world);
-
-    //Crée le mur de météorites
-
 
     // on met à jour l'écran
     update_screen(renderer);
