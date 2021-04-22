@@ -122,4 +122,21 @@ void finish_line(sprite_t *sp1, sprite_t *sp2, world_t *world);
  */
 void crash(world_t *world);
 
+/**
+ * @brief Fonction qui met fin à la partie en cas de défaite
+ * 
+ * @param sp1 premier sprite de type sprite_t
+ * @param sp2 deuxième sprite de type sprite_t
+ * @param world les données du monde
+ */
+void collision_meteore(sprite_t *sp1, sprite_t *sp2, world_t *world);
+
+
+/**
+ * @brief Fin de partie
+ * 
+ * @param world les données du monde
+ */
+void fin_de_partie(world_t *world);
+
 #endif
