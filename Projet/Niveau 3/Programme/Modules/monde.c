@@ -94,7 +94,7 @@ void update_data(world_t *world){
 
     //Collisions
     finish_line(&world->arrivee, &world->vaisseau, world);
-    handle_sprite_collision(&world->arrivee, &world->vaisseau, world);
+    //handle_sprite_collision(&world->arrivee, &world->vaisseau, world);
     //handle_sprite_collision(&world->mur, &world->vaisseau, world);
 
     crash(world);
