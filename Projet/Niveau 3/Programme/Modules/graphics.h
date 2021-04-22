@@ -62,7 +62,16 @@ void apply_sprite(SDL_Renderer *renderer, SDL_Texture *texture, sprite_t *sprite
  * @param world les données du monde
  * @param textures la texture liée au fond
  */
-void crea_walls(SDL_Renderer *renderer, world_t *world,textures_t *textures, int hauteur, int largeur);
+void crea_wall(textures_t *textures,SDL_Renderer *renderer,world_t *world,int x,int y,int h,int w);
+
+/**
+ * @brief Fonction qui prend la position des murs et les affiches dans le renderer
+ * 
+ * @param renderer le renderer
+ * @param world les données du monde
+ * @param textures les textures
+ */
+void apply_walls(SDL_Renderer *renderer, textures_t *textures, world_t *world);
 
 /**
  * \brief La fonction rafraichit l'écran en fonction de l'état des données du monde

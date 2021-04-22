@@ -47,14 +47,24 @@ void apply_sprite(SDL_Renderer *renderer, SDL_Texture *texture, sprite_t *sprite
     apply_texture(texture, renderer, sprite->x, sprite->y);
 }
 
-//Crée un mur de metorite avec une hauteur/largeur d'obstacles définie
-void crea_walls(SDL_Renderer *renderer, world_t *world,textures_t *textures, int hauteur,int largeur){
-    for(int y = 0; y < hauteur; y++){
-        for(int x = 0; x < largeur; x++){
-            apply_texture(textures->meteorite, renderer, world->mur.x + x * METEORITE_SIZE , world->mur.y + y * METEORITE_SIZE);
+
+/// CA COPI SAL 
+void crea_wall(textures_t *textures,SDL_Renderer *renderer,world_t *world,int x,int y,int h,int w){
+    for (int i = 0; i < h; i++){
+        for (int j = 0; j < w; j++){
+            // Applique i*j fois la texture pour créer le mur de météorites
+            apply_texture(textures->meteorite, renderer,x+j*METEORITE_SIZE,y+i*METEORITE_SIZE);
         }
     }
 }
+
+void apply_walls(SDL_Renderer *renderer, textures_t *textures, world_t *world){
+    for(int i=0;i<MURS_NBR;i++){
+        // Applique la texture autant de fois qu'il a de murs de météorites
+        crea_wall(textures,renderer,world, world->murs[i].x,world->murs[i].y,world->murs[i].h/METEORITE_SIZE,world->murs[i].w/METEORITE_SIZE);
+    }
+}
+
 
 //La fonction rafraichit l'écran en fonction de l'état des données du monde
 void refresh_graphics(SDL_Renderer *renderer, world_t *world,textures_t *textures){
@@ -73,8 +83,11 @@ void refresh_graphics(SDL_Renderer *renderer, world_t *world,textures_t *texture
     //affichage de la ligne d'arrivé
     apply_sprite(renderer, textures->arrivee, &world->arrivee);         
 
-    //Mur de météorites
-    crea_walls(renderer, world, textures,7,3);
+    //Affichage et applique les collisions des murs
+    apply_walls(renderer, textures, world);
+
+    //Crée le mur de météorites
+
 
     // on met à jour l'écran
     update_screen(renderer);
