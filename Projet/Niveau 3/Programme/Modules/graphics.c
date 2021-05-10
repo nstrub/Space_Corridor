@@ -122,10 +122,28 @@ void end_graphics(SDL_Renderer *renderer, world_t *world,textures_t *textures, i
 
     //application des textures dans le renderer
     apply_background(renderer, textures->background);
-    char tempstr[20];
-    sprintf(tempstr, "%d", temps/1000);
-    //On applique le texte
-    apply_text(renderer, 150, 200,100,100,tempstr,textures->font);
-    apply_text(renderer, 100, 200,100,100,"Victoire en :",textures->font);  
+
+
+
+    if(world->end == 0){
+
+        char tempstr[20];
+        sprintf(tempstr, "%d", temps/1000);
+
+        //On applique le texte
+        apply_text(renderer, 10, 335,70,70,tempstr,textures->font);
+        apply_text(renderer, 30, 200,240,100,"Victoire en :",textures->font);
+        apply_text(renderer, 80, 330,190,80,"Sec",textures->font);
+
+    }
+
+    if(world->end == 1){
+
+        apply_text(renderer, 30, 200,240,100,"Vous avez perdu",textures->font);
+    }
+
+
+
+
     update_screen(renderer); 
 }
