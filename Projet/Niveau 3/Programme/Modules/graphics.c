@@ -89,10 +89,11 @@ void refresh_graphics(SDL_Renderer *renderer, world_t *world,textures_t *texture
     apply_walls(renderer, textures, world);
 
     char tempstr[20];
-    sprintf(tempstr, "TEMPS ICI --> %d", temps/1000);
+    sprintf(tempstr, "%d", temps/1000);
     //On applique le texte
 //    apply_text(renderer, 0, SCREEN_HEIGHT/2,10,10,tempstr,textures->font);
-    apply_text(renderer, 0, 0,200,60,tempstr,textures->font);
+    apply_text(renderer, 250, 0,60,60,tempstr,textures->font);
+    apply_text(renderer, 160, 0,80,60,"Temps :",textures->font);
 
     // on met à jour l'écran
     update_screen(renderer);
