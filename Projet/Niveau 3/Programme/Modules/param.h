@@ -102,6 +102,7 @@ struct world_s{
     int gameover; /*!< Champ indiquant si l'on est à la fin du jeu */
     int vitesse; /*!< Vitesse de déplacement de base des strucures*/
     int desappear; /*!< Variable qui sert à afficher le sprite du vaisseau*/
+    int end; /*!< Type de fin de partie*/
 
 };
 

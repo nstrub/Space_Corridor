@@ -34,6 +34,9 @@ void init_data(world_t * world){
     //Le sprite est affiché de base
     world->desappear = 0;
 
+    //On met la valeur end à une valeur différente de 0 et 1
+    world->end = 2;
+
     // Vitesse de base
     world->vitesse = INITIAL_SPEED;
 
@@ -148,6 +151,7 @@ void finish_line(sprite_t *sp1, sprite_t *sp2, world_t *world, int temps){
     if(sprites_collide(sp1,sp2)){// Le vaisseau atteint la ligne d'arrivée
         printf("VOUS AVEZ GAGNé(e) EN %d secondes !!! ggwp\n",temps/1000);
         fin_de_partie(world);
+        world->end = 0;
     }
 }
 
@@ -161,6 +165,7 @@ void collision_meteore(sprite_t *sp1, sprite_t *sp2, world_t *world){
 
     if(sprites_collide(sp1,sp2)){
         fin_de_partie(world);
+        world->end = 1;
         printf("\n\n\n                   You loose\n\n\n");
 
     }

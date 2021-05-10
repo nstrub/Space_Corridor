@@ -70,7 +70,6 @@ void apply_walls(SDL_Renderer *renderer, textures_t *textures, world_t *world){
 
 //La fonction rafraichit l'écran en fonction de l'état des données du monde
 void refresh_graphics(SDL_Renderer *renderer, world_t *world,textures_t *textures, int temps){
-    
     //on vide le renderer
     clear_renderer(renderer);
 
@@ -81,7 +80,7 @@ void refresh_graphics(SDL_Renderer *renderer, world_t *world,textures_t *texture
     if(world->desappear != 1){
         apply_sprite(renderer, textures->vaisseau, &world->vaisseau);   
     }
-    
+
     //affichage de la ligne d'arrivé
     apply_sprite(renderer, textures->arrivee, &world->arrivee);         
 
@@ -91,9 +90,8 @@ void refresh_graphics(SDL_Renderer *renderer, world_t *world,textures_t *texture
     char tempstr[20];
     sprintf(tempstr, "%d", temps/1000);
     //On applique le texte
-//    apply_text(renderer, 0, SCREEN_HEIGHT/2,10,10,tempstr,textures->font);
-    apply_text(renderer, 250, 0,60,60,tempstr,textures->font);
-    apply_text(renderer, 160, 0,80,60,"Temps :",textures->font);
+    apply_text(renderer, 230, 0,60,60,tempstr,textures->font);
+    apply_text(renderer, 140, 0,80,60,"Temps :",textures->font);
 
     // on met à jour l'écran
     update_screen(renderer);
@@ -116,4 +114,18 @@ void init(SDL_Window **window, SDL_Renderer ** renderer, textures_t *textures, w
     init_data(world);
     init_textures(*renderer,textures);
     
+}
+
+void end_graphics(SDL_Renderer *renderer, world_t *world,textures_t *textures, int temps){//a finir
+    //on vide le renderer
+    clear_renderer(renderer);
+
+    //application des textures dans le renderer
+    apply_background(renderer, textures->background);
+    char tempstr[20];
+    sprintf(tempstr, "%d", temps/1000);
+    //On applique le texte
+    apply_text(renderer, 150, 200,100,100,tempstr,textures->font);
+    apply_text(renderer, 100, 200,100,100,"Victoire en :",textures->font);  
+    update_screen(renderer); 
 }
