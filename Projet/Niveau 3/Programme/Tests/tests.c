@@ -213,6 +213,48 @@ void test_update_walls(){
 
 
 
+//test_fin_de_partie
+
+void param_fin_de_partie(world_t *monde){
+    printf("La vitesse du monde est :  %d\n\nLe desappear vaut : %d\n\nGameover vaut : %d\n\n\n", monde->vitesse, monde->desappear, monde->gameover);
+    fin_de_partie(monde);
+    printf("\n\nAprès la fonction fin de partie :\n\n\nLa vitesse du monde est :  %d\n\nLe desappear vaut : %d\n\nGameover vaut : %d\n\n\n", monde->vitesse, monde->desappear, monde->gameover);
+}
+
+
+void test_fin_de_partie(){
+
+    printf("------test_fin_de_partie------\n\n\n");
+
+    //initialisation
+    world_t monde;
+    monde.vitesse = 10;             
+    monde.desappear = 10;
+    monde.gameover = 10;  
+
+    param_fin_de_partie(&monde);
+
+
+
+    printf("\n\n\n\n");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -226,6 +268,7 @@ int main( int argc, char* args[] ){
     test_handle_sprite_collision();
     test_init_walls();
     test_update_walls();
+    test_fin_de_partie();
     return 0;
 }
 
