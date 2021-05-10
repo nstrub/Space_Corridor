@@ -30,6 +30,7 @@ void  init_textures(SDL_Renderer *renderer, textures_t *textures){
     textures->vaisseau = load_image( "ressources/spaceship.bmp", renderer);
     textures->arrivee = load_image( "ressources/finish_line.bmp", renderer);
     textures->meteorite = load_image( "ressources/meteorite.bmp", renderer);  
+    textures->font = load_font ("ressources/arial.ttf",14);
 }
 
 
@@ -68,7 +69,7 @@ void apply_walls(SDL_Renderer *renderer, textures_t *textures, world_t *world){
 
 
 //La fonction rafraichit l'écran en fonction de l'état des données du monde
-void refresh_graphics(SDL_Renderer *renderer, world_t *world,textures_t *textures){
+void refresh_graphics(SDL_Renderer *renderer, world_t *world,textures_t *textures, int temps){
     
     //on vide le renderer
     clear_renderer(renderer);
@@ -87,6 +88,12 @@ void refresh_graphics(SDL_Renderer *renderer, world_t *world,textures_t *texture
     //Affichage et applique les collisions des murs
     apply_walls(renderer, textures, world);
 
+    char tempstr[20];
+    sprintf(tempstr, "TEMPS ICI --> %d", temps/1000);
+    //On applique le texte
+//    apply_text(renderer, 0, SCREEN_HEIGHT/2,10,10,tempstr,textures->font);
+    apply_text(renderer, 0, 0,200,60,tempstr,textures->font);
+
     // on met à jour l'écran
     update_screen(renderer);
 
@@ -97,12 +104,15 @@ void refresh_graphics(SDL_Renderer *renderer, world_t *world,textures_t *texture
 void clean(SDL_Window *window, SDL_Renderer * renderer, textures_t *textures, world_t * world){
     clean_textures(textures);
     clean_sdl(renderer,window);
+    clean_font(textures->font);
 }
 
 
 //fonction qui initialise le jeu: initialisation de la partie graphique (SDL), chargement des textures, initialisation des données
 void init(SDL_Window **window, SDL_Renderer ** renderer, textures_t *textures, world_t * world){
     init_sdl(window,renderer,SCREEN_WIDTH, SCREEN_HEIGHT);
+    init_ttf();
     init_data(world);
     init_textures(*renderer,textures);
+    
 }

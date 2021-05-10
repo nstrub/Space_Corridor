@@ -58,7 +58,7 @@ int main( int argc, char* args[] )
         update_data(&world,temps_ecoule);
         
         //rafraichissement de l'écran
-        refresh_graphics(renderer,&world,&textures);
+        refresh_graphics(renderer,&world,&textures, temps_ecoule);
         
         // pause de 10 ms pour controler la vitesse de rafraichissement
         pause(10);

@@ -80,7 +80,7 @@ void apply_walls(SDL_Renderer *renderer, textures_t *textures, world_t *world);
  * \param textures les textures
  */
 
-void refresh_graphics(SDL_Renderer *renderer, world_t *world,textures_t *textures);
+void refresh_graphics(SDL_Renderer *renderer, world_t *world,textures_t *textures, int temps);
 
 
 /**

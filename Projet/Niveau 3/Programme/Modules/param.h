@@ -13,8 +13,10 @@
 #define PARAM_H
 
 #include "sdl2-light.h"
+#include "sdl2-ttf-light.h"
 #include <stdio.h>
 #include <stdlib.h>
+
 
 // Définitions
 /**
@@ -121,6 +123,7 @@ struct textures_s{
     SDL_Texture* vaisseau; /*!< Texture liée à l'image du vaisseau. */
     SDL_Texture* arrivee; /*!< Texture liée à l'image de la ligne d'arrivée */
     SDL_Texture* meteorite; /*!< Texture liée à l'image de meteorite */
+    TTF_Font* font; /*!< Police d'écriture pour l'affichage dans le jeu */
 };
 
 
