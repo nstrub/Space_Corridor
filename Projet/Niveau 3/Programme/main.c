@@ -64,12 +64,12 @@ int main( int argc, char* args[] )
         pause(10);
     }
     
-    //mettre truc pause à voir
 
     end_graphics(renderer,&world,&textures, temps_ecoule);
     
-
+    //On fait une pause de 4 secondes avant de fermer le jeu
     pause(4000);
+    
     //nettoyage final
     clean(window,renderer,&textures,&world);
     

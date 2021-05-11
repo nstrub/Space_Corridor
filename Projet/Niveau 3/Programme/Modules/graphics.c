@@ -9,7 +9,7 @@
 #include "graphics.h"
 
 
-//Les fonctions
+//Les fonctions//
 
 
 
@@ -125,10 +125,12 @@ void end_graphics(SDL_Renderer *renderer, world_t *world,textures_t *textures, i
     // Si le joueur gagne
     if(world->end == 0){
 
+        //On créé un tableau de charactère
         char tempstr[20];
+        //On converti le temps de nombre à un charactère afin de le mettre dans le tableau
         sprintf(tempstr, "%d", temps/1000);
 
-        //On applique le texte
+        //On applique le texte (de victoire)
         apply_text(renderer, 10, 335,70,70,tempstr,textures->font);
         apply_text(renderer, 30, 200,240,100,"Victoire en :",textures->font);
         apply_text(renderer, 80, 330,190,80,"Sec",textures->font);
@@ -138,6 +140,7 @@ void end_graphics(SDL_Renderer *renderer, world_t *world,textures_t *textures, i
     //Si le joueur perd
     else if(world->end == 1){
 
+        //On applique le texte (de défaite pas besoin d'afficher le temps)
         apply_text(renderer, 30, 200,240,100,"Vous avez perdu",textures->font);
     }
 
@@ -148,6 +151,6 @@ void end_graphics(SDL_Renderer *renderer, world_t *world,textures_t *textures, i
 
 
 
-
+    //On met à jour l'affichage sur le renderer une fois sorti d'une boucle
     update_screen(renderer); 
 }
