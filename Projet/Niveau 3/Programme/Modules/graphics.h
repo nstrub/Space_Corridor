@@ -142,4 +142,32 @@ void init(SDL_Window **window, SDL_Renderer ** renderer, textures_t *textures, w
  */
 void end_graphics(SDL_Renderer *renderer, world_t *world,textures_t *textures, int temps);
 
+/**
+ * @brief Ecran au lancement du jeu
+ * 
+ * @param renderer le renderer
+ * @param world le monde
+ * @param textures les textures
+ */
+void begin_screen(SDL_Renderer *renderer, world_t *world,textures_t *textures);
+
+
+
+/**
+ * @brief test
+ * 
+ * @param renderer 
+ * @param world 
+ * @param textures 
+ */
+void test(SDL_Renderer *renderer, world_t *world,textures_t *textures);
+
+
+
+
+
+
+
+
+
 #endif

@@ -38,3 +38,14 @@ void apply_text(SDL_Renderer *renderer,int x, int y, int w, int h, const char *t
 void clean_font(TTF_Font * font){
     TTF_CloseFont(font);
 }
+
+void apply_title(SDL_Renderer *renderer,int x, int y, int w, int h, const char *text, TTF_Font *font){
+    SDL_Color color = { 220, 20, 60 };
+    
+    SDL_Surface* surface = TTF_RenderText_Solid(font, text, color);
+     
+    SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
+    SDL_Rect dstrect2 = {x, y, w, h};
+    SDL_RenderCopy(renderer, texture, NULL, &dstrect2);
+    
+}

@@ -32,7 +32,6 @@ void  init_textures(SDL_Renderer *renderer, textures_t *textures){
 }
 
 
-
 //La fonction applique la texture du fond sur le renderer lié à l'écran de jeu
 void apply_background(SDL_Renderer *renderer, SDL_Texture *texture){
     if(texture != NULL){
@@ -114,7 +113,7 @@ void init(SDL_Window **window, SDL_Renderer ** renderer, textures_t *textures, w
     
 }
 
-void end_graphics(SDL_Renderer *renderer, world_t *world,textures_t *textures, int temps){//a finir
+void end_graphics(SDL_Renderer *renderer, world_t *world,textures_t *textures, int temps){
     //on vide le renderer
     clear_renderer(renderer);
 
@@ -153,4 +152,22 @@ void end_graphics(SDL_Renderer *renderer, world_t *world,textures_t *textures, i
 
     //On met à jour l'affichage sur le renderer une fois sorti d'une boucle
     update_screen(renderer); 
+}
+
+void begin_screen(SDL_Renderer *renderer, world_t *world,textures_t *textures){
+    clear_renderer(renderer);
+    apply_title(renderer, 28, 50,240,100,"Space corridor",textures->font);
+    update_screen(renderer);
+    pause(200);
+    apply_title(renderer, 60, 250,170,70,"Nouvelles partie",textures->font);
+    pause(200);
+    update_screen(renderer);
+
+}
+
+void test(SDL_Renderer *renderer, world_t *world,textures_t *textures){// a remplacer par un handle event
+    for(int i = 0; i< 3; i++){
+        begin_screen(renderer,world,textures);
+        pause(1000);
+    }
 }

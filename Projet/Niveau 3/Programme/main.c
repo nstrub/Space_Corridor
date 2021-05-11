@@ -43,9 +43,19 @@ int main( int argc, char* args[] )
     SDL_Renderer *renderer;
     SDL_Window *window;
 
+
+
+
+    
+
+
+    // Début de partie
     int temps_ecoule = 0;
     //initialisation du jeu
     init(&window,&renderer,&textures,&world);
+
+    test(renderer,&world,&textures);
+    
     
     while(!is_game_over(&world)){ //tant que le jeu n'est pas fini
         //Le temps s'écoule
@@ -65,6 +75,9 @@ int main( int argc, char* args[] )
     }
     
 
+
+
+    //Fin de partie
     end_graphics(renderer,&world,&textures, temps_ecoule);
     
     //On fait une pause de 4 secondes avant de fermer le jeu
