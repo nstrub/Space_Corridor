@@ -10,7 +10,8 @@
 #ifndef HANDLE_EVENT_H
 #define HANDLE_EVENT_H
 
-#include "param.h"
+#include <stdio.h>
+#include <stdlib.h>
 #include "sdl2-light.h"
 #include "monde.h"
 

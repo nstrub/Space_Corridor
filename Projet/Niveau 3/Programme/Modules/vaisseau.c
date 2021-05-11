@@ -6,9 +6,6 @@
  * \date 12/04/2021
  */
 
-#include "graphics.h"
-#include "monde.h"
-#include "param.h"
 #include "vaisseau.h"
 
 
