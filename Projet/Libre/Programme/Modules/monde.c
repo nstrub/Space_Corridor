@@ -75,13 +75,13 @@ void print_sprite(sprite_t *sprite){
     printf("La hauteur et largeur font : %d et %d\n",sprite->h,sprite->w);
 }
 
-
+//La fonction indique si le jeu est fini en fonction des données du monde
 int is_game_over(world_t *world){
     return world->gameover;
 }
 
 
-
+//Fonction qui met à jour les données en tenant compte de la physique du monde
 void update_data(world_t *world, int temps){
     // Déplacement de la ligne d'arrivée
     world->arrivee.y += world->vitesse ;
@@ -95,15 +95,14 @@ void update_data(world_t *world, int temps){
     depacement(world);
 
     //Collisions
-
+    //Si la ligne d'arrivée est franchie
     finish_line(&world->arrivee, &world->vaisseau, world, temps);
-    //handle_sprite_collision(&world->arrivee, &world->vaisseau, world);
-    //handle_sprite_collision(&world->mur, &world->vaisseau, world);
-
+    //Si le vaisseau se crash
     crash(world);
 
 }
 
+//Fonction qui gère la collision entre sprites
 int sprites_collide(sprite_t *sp1, sprite_t *sp2){
     int x1,x2,y1,y2,w1,w2,h1,h2,col_x = 0,col_y = 0;
     x1=sp1->x;
@@ -132,6 +131,7 @@ int sprites_collide(sprite_t *sp1, sprite_t *sp2){
     return 0;
 }
 
+//Fonction qui met la vitesse du vaisseau à 0 en cas de contact entre deux sprites
 void handle_sprite_collision(sprite_t *sp1, sprite_t *sp2, world_t *world){
 
     if(sprites_collide(sp1,sp2)){
@@ -140,12 +140,14 @@ void handle_sprite_collision(sprite_t *sp1, sprite_t *sp2, world_t *world){
     }
 }
 
+//Fonction qui met à jour les murs en fonctions de la vistesse du monde
 void update_walls(world_t *world){
     for(int i = 0; i < MURS_NBR; i++){
         world->murs[i].y += world->vitesse;
     }
 }
 
+//Fonction qui met fin à la partie en cas de victoire
 void finish_line(sprite_t *sp1, sprite_t *sp2, world_t *world, int temps){
     if(sprites_collide(sp1,sp2)){// Le vaisseau atteint la ligne d'arrivée
         printf("VOUS AVEZ GAGNé(e) EN %d secondes !!! ggwp\n",temps/1000);
@@ -154,12 +156,14 @@ void finish_line(sprite_t *sp1, sprite_t *sp2, world_t *world, int temps){
     }
 }
 
+//Fonction qui met fin à la partie en cas de crash
 void crash(world_t *world){
     for(int i = 0; i < MURS_NBR; i++){
         collision_meteore(&world->murs[i], &world->vaisseau, world);
     }
 }
 
+//Fonction qui met fin à la partie au contact d'un asteroid (sera appelé en boucle dans crash)
 void collision_meteore(sprite_t *sp1, sprite_t *sp2, world_t *world){
 
     if(sprites_collide(sp1,sp2)){
@@ -170,6 +174,7 @@ void collision_meteore(sprite_t *sp1, sprite_t *sp2, world_t *world){
     }
 }
 
+//Fonction qui met à jour les données du monde en fun de partie
 void fin_de_partie(world_t *world){
         world->vitesse = 0;             //la vitesse devient nulle
         world->desappear = 1;             //le vaisseau disparait
