@@ -6,9 +6,9 @@
  * \date 18 mars 2021
  */
 
-
+#include <stdio.h>
+#include <stdlib.h>
 #include "Modules/sdl2-light.h"
-#include "Modules/param.h"
 #include "Modules/graphics.h"
 #include "Modules/monde.h"
 #include "Modules/handle_event.h"

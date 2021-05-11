@@ -7,10 +7,9 @@
  */
 
 
-#include "graphics.h"
 #include "monde.h"
 #include "vaisseau.h"
-#include "param.h"
+
 
 
 void init_data(world_t * world){

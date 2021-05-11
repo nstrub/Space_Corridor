@@ -11,7 +11,124 @@
 #ifndef MONDE_H
 #define MONDE_H
 
-#include "param.h"
+#include <stdio.h>
+#include <stdlib.h>
+
+
+
+
+// Définitions
+/**
+ * \brief Largeur de l'écran de jeu
+ */
+#define SCREEN_WIDTH 300
+
+/**
+ * \brief Hauteur de l'écran de jeu
+ */
+#define SCREEN_HEIGHT 480
+
+
+/**
+ * \brief Taille d'un vaisseau
+ */
+
+#define SHIP_SIZE 32
+
+
+/**
+ * \brief Taille d'un météorite
+*/
+
+#define METEORITE_SIZE 32
+
+
+/**
+ * \brief Hauteur de la ligne d'arrivée
+ */
+
+
+#define FINISH_LINE_HEIGHT 10
+
+
+/**
+ * \brief Pas de déplacement horizontal du vaisseau
+*/
+
+#define MOVING_STEP 10
+
+
+/**
+  * \brief Vitesse initiale de déplacement vertical des éléments du jeu 
+*/
+
+#define INITIAL_SPEED 2
+
+/**
+ * @brief Nombre de murs de méréorites dans le jeu
+ * 
+ */
+#define MURS_NBR 6
+
+
+// DEFINITION DES STRUCTURES //
+
+/**
+*\struct sprite_s
+*\typedef sprite_t
+*\brief Représente un sprite du jeu
+*/
+struct sprite_s{
+    int x; /*!< Abscisse du centre de l'image. */
+    int y; /*!< Ordonnée du centre de l'image. */
+    int h; /*!< Hauteur de l'image.*/
+    int w; /*!< Largeur de l'image.*/
+};
+typedef struct sprite_s sprite_t;
+
+
+
+/**
+ * \brief Représentation du monde du jeu
+*/
+
+struct world_s{
+    sprite_t vaisseau; /*! < Ajout d'un vaisseau de type sprite_t au monde */
+    sprite_t arrivee; /*! < Ajout de la ligne d'arrivée de type sprite_t au monde */
+    sprite_t mur; /*! <Ajout du mur de meteorite de type sprite_t au monde */
+    sprite_t murs[MURS_NBR]; /*! <Ajout des murs de meteorites de type sprite_t au monde.*/
+
+    int gameover; /*!< Champ indiquant si l'on est à la fin du jeu */
+    int vitesse; /*!< Vitesse de déplacement de base des strucures*/
+    int desappear; /*!< Variable qui sert à afficher le sprite du vaisseau*/
+    int end; /*!< Type de fin de partie*/
+
+};
+
+/**
+ * \brief Type qui correspond aux données du monde
+ */
+
+typedef struct world_s world_t;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Prototypes de Fonctions
+
+
 
 
 /**
@@ -67,13 +184,6 @@ int is_game_over(world_t *world);
 void update_data(world_t *world, int temps);
 
 
-/**
- * \brief La fonction gère les évènements ayant eu lieu et qui n'ont pas encore été traités
- * \param event paramètre qui contient les événements
- * \param world les données du monde
- */
-
-void handle_events(SDL_Event *event,world_t *world);
 
 
 /**

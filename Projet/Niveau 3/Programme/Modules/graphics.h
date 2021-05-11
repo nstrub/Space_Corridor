@@ -11,7 +11,35 @@
 #ifndef GRAPHICS_H
 #define GRAPHICS_H
 
-#include "param.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include "monde.h"
+#include "sdl2-light.h"
+#include "sdl2-ttf-light.h"
+
+
+//Definitions
+
+/**
+ * \brief Représentation pour stocker les textures nécessaires à l'affichage graphique
+*/
+
+struct textures_s{
+    SDL_Texture* background; /*!< Texture liée à l'image du fond de l'écran. */
+    SDL_Texture* vaisseau; /*!< Texture liée à l'image du vaisseau. */
+    SDL_Texture* arrivee; /*!< Texture liée à l'image de la ligne d'arrivée */
+    SDL_Texture* meteorite; /*!< Texture liée à l'image de meteorite */
+    TTF_Font* font; /*!< Police d'écriture pour l'affichage dans le jeu */
+};
+
+
+/**
+ * \brief Type qui correspond aux textures du jeu
+*/
+
+typedef struct textures_s textures_t;
+
+
 
 
 
@@ -104,6 +132,14 @@ void clean(SDL_Window *window, SDL_Renderer * renderer, textures_t *textures, wo
 
 void init(SDL_Window **window, SDL_Renderer ** renderer, textures_t *textures, world_t * world);
 
+/**
+ * @brief Fonction qui réalise l'affichage de fin de partie
+ * 
+ * @param renderer le renderer
+ * @param world le monde
+ * @param textures les textures
+ * @param temps le chronomètre du monde
+ */
 void end_graphics(SDL_Renderer *renderer, world_t *world,textures_t *textures, int temps);
 
 #endif

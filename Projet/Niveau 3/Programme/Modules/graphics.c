@@ -7,8 +7,6 @@
  */
 
 #include "graphics.h"
-#include "monde.h"
-#include "param.h"
 
 
 //Les fonctions
@@ -124,7 +122,7 @@ void end_graphics(SDL_Renderer *renderer, world_t *world,textures_t *textures, i
     apply_background(renderer, textures->background);
 
 
-
+    // Si le joueur gagne
     if(world->end == 0){
 
         char tempstr[20];
@@ -137,9 +135,15 @@ void end_graphics(SDL_Renderer *renderer, world_t *world,textures_t *textures, i
 
     }
 
-    if(world->end == 1){
+    //Si le joueur perd
+    else if(world->end == 1){
 
         apply_text(renderer, 30, 200,240,100,"Vous avez perdu",textures->font);
+    }
+
+    //Si le joueur utilise échape
+    else{
+        apply_text(renderer, 30, 200,240,100,"A plus",textures->font);
     }
 
 

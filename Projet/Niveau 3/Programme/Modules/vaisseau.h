@@ -9,10 +9,10 @@
 #ifndef VAISSEAU_H
 #define VAISSEAU_H
 
+#include <stdio.h>
+#include <stdlib.h>
 #include "graphics.h"
 #include "monde.h"
-#include "param.h"
-#include "vaisseau.h"
 
 /**
  * @brief Fonction qui replace le vaisseau lorsqu'il sort de l'écran à gauche

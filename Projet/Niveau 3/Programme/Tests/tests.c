@@ -1,5 +1,5 @@
 /**
- * \file param.h
+ * \file tests.c
  * \brief Fichier de test pour le 2) du niveau 2
  * \author STRUB Nicolas DEMANGE Dan
  * \version 1.0
@@ -7,7 +7,6 @@
  */
 
 #include "../Modules/monde.h"
-#include "../Modules/param.h"
 #include "../Modules/vaisseau.h"
 
 
