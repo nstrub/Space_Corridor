@@ -226,14 +226,14 @@ void finish_line(sprite_t *sp1, sprite_t *sp2, world_t *world, int temps);
 
 
 /**
- * @brief Fonction qui met fin à la partie en cas de victoire
+ * @brief Fonction qui met fin à la partie en cas de crash
  * 
  * @param world les données du monde
  */
 void crash(world_t *world);
 
 /**
- * @brief Fonction qui met fin à la partie en cas de défaite
+ * @brief //Fonction qui met fin à la partie au contact d'un asteroid (sera appelé en boucle dans crash)
  * 
  * @param sp1 premier sprite de type sprite_t
  * @param sp2 deuxième sprite de type sprite_t
