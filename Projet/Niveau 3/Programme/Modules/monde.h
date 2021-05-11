@@ -116,7 +116,7 @@ void finish_line(sprite_t *sp1, sprite_t *sp2, world_t *world, int temps);
 
 
 /**
- * @brief Fonction qui met fin à la partie en cas de victoire
+ * @brief Fonction qui met fin à la partie si le vaisseau se crash
  * 
  * @param world les données du monde
  */
