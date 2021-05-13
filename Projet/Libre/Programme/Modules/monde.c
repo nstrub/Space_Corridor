@@ -61,13 +61,13 @@ void init_sprite(sprite_t *sprite, int x, int y, int w, int h){
 
 // //La fonction qui initialise le parcours de murs
 void init_walls(world_t *world){
-        init_sprite(&world->murs[0],48,0,96,192);                      // Problème de décalage 
+        init_sprite(&world->murs[0],48,0,96,192);                      
         init_sprite(&world->murs[1],252,0,96,192);
         init_sprite(&world->murs[2],16,-352,32,160);
         init_sprite(&world->murs[3],188,-352,224,160);
         init_sprite(&world->murs[4],48,-672,96,192);
         init_sprite(&world->murs[5],252,-672,96,192);
-    }
+}
 
 //fonction qui affiche dans le terminal les coordonées d'un sprite.
 void print_sprite(sprite_t *sprite){

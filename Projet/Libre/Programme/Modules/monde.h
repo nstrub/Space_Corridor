@@ -71,6 +71,13 @@
 #define MURS_NBR 6
 
 
+/**
+ * @brief Nombre de choix moins un possible dans le menu
+ * 
+ */
+#define menu_max 2
+
+
 // DEFINITION DES STRUCTURES //
 
 /**
@@ -103,6 +110,7 @@ struct world_s{
     int desappear; /*!< Variable qui sert à afficher le sprite du vaisseau*/
     int end; /*!< Type de fin de partie*/
     int game; /*< variable qui gère les différentes parties>*/
+    int menu; /*< Gère les données affichées dans le menu<*/
 
 };
 

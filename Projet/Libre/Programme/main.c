@@ -54,12 +54,12 @@ int main( int argc, char* args[] )
     int temps_ecoule = 0;
     int temps_soustraire = 0;
     world.game = 0;
+    world.menu = 0;
     
     
         //Affiche l'écran titre
-    while(world.game == 0){
-        // Temps passé dans le menu
-        temps_soustraire = SDL_GetTicks();
+    while(world.game == 0 && !is_game_over(&world)){
+        
 
         // Affiche l'écran titre
         ecran_titre(renderer,&world,&textures);
@@ -70,11 +70,36 @@ int main( int argc, char* args[] )
         pause(10);
     
     }
+
+
+    // Choix du niveau (affiche le menu)
+    while(world.game == 1 && !is_game_over(&world))
+    {
+        // Affiche l'écran du menu
+        menu(renderer,&world,&textures);
+
+        // gestion des événements
+        handle_events(&event,&world);
+
+        // Temps passé dans le menu
+        temps_soustraire = SDL_GetTicks();
+
+        pause(10);
+
+        if(world.gameover == 1){
+
+        }
+        
+    }
+
+
+
+
     // Début de partie
     
     while(!is_game_over(&world)){ //tant que le jeu n'est pas fini
         //Le temps s'écoule
-        temps_ecoule = SDL_GetTicks();
+        temps_ecoule = SDL_GetTicks() - temps_soustraire;
         
         //gestion des évènements
         handle_events(&event,&world);
@@ -95,8 +120,8 @@ int main( int argc, char* args[] )
     //Fin de partie
     end_graphics(renderer,&world,&textures, temps_ecoule);
     
-    //On fait une pause de 4 secondes avant de fermer le jeu
-    pause(4000);
+    //On fait une pause de avant de fermer le jeu
+    pause(2500);
     
     //nettoyage final
     clean(window,renderer,&textures,&world);

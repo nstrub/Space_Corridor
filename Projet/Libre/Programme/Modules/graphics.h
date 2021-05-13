@@ -143,15 +143,6 @@ void init(SDL_Window **window, SDL_Renderer ** renderer, textures_t *textures, w
  */
 void end_graphics(SDL_Renderer *renderer, world_t *world,textures_t *textures, int temps);
 
-/**
- * @brief Ecran au lancement du jeu
- * 
- * @param renderer le renderer
- * @param world le monde
- * @param textures les textures
- */
-void begin_screen(SDL_Renderer *renderer, world_t *world,textures_t *textures);
-
 
 
 /**
@@ -162,6 +153,16 @@ void begin_screen(SDL_Renderer *renderer, world_t *world,textures_t *textures);
  * @param textures les textures
  */
 void ecran_titre(SDL_Renderer *renderer, world_t *world,textures_t *textures);
+
+
+/**
+ * @brief ecran du menu
+ * 
+ * @param renderer le renderer
+ * @param world le monde
+ * @param textures les textures
+ */
+void menu(SDL_Renderer *renderer, world_t *world,textures_t *textures);
 
 
 

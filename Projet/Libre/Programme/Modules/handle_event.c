@@ -35,7 +35,7 @@ void handle_events(SDL_Event *event,world_t *world){
                 world->gameover = 1;
             }
 
-            if(world->game != 0)
+            if(world->game != 0 && world->game != 1) 
             {
 
                 //si Flèche droite est appuyée
@@ -60,18 +60,52 @@ void handle_events(SDL_Event *event,world_t *world){
                     world->vitesse -= 2;
                 }
             }
+
+            // Dans l'écran titre
             if(world->game == 0)
             {
-                //si la touche appuyée est 'D'
+                //si la touche appuyée est 'espace'
                 if(event->key.keysym.sym == SDLK_SPACE)
                 {
                  world->game = 1;
-                 printf("d est appuyé");
                 }
-            
+            }
+
+            // Dans le menu
+            if(world->game == 1) 
+            {
+
+                //si la flèche du haut est appuyée
+                if(event->key.keysym.sym == SDLK_UP)
+                {
+                    if(world->menu == 0)
+                    {
+                        world->menu = menu_max;
+                    }
+                    else
+                    {
+                        world->menu += -1;
+                    }
+                }
+                //si la flèche du haut est appuyée
+                if(event->key.keysym.sym == SDLK_DOWN)
+                {
+                    if(world->menu == menu_max)
+                    {
+                        world->menu = 0;
+                    }
+                    else
+                    {
+                        world->menu += 1;
+                    }
+                }
 
 
-
+                //si la touche appuyée est espace
+                if(event->key.keysym.sym == SDLK_RETURN)
+                {
+                 world->game = 2;
+                }
             }
         }
     }

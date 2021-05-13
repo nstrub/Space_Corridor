@@ -117,12 +117,11 @@ void end_graphics(SDL_Renderer *renderer, world_t *world,textures_t *textures, i
     //on vide le renderer
     clear_renderer(renderer);
 
-    //application des textures dans le renderer
-    apply_background(renderer, textures->background);
-
 
     // Si le joueur gagne
     if(world->end == 0){
+        //application des textures dans le renderer
+        apply_background(renderer, textures->background);
 
         //On créé un tableau de charactère
         char tempstr[20];
@@ -138,6 +137,8 @@ void end_graphics(SDL_Renderer *renderer, world_t *world,textures_t *textures, i
 
     //Si le joueur perd
     else if(world->end == 1){
+        //application des textures dans le renderer
+        apply_background(renderer, textures->background);
 
         //On applique le texte (de défaite pas besoin d'afficher le temps)
         apply_text(renderer, 30, 200,240,100,"Vous avez perdu",textures->font);
@@ -145,7 +146,8 @@ void end_graphics(SDL_Renderer *renderer, world_t *world,textures_t *textures, i
 
     //Si le joueur utilise échape
     else{
-        apply_text(renderer, 30, 200,240,100,"A plus",textures->font);
+        
+        apply_title(renderer, 30, 200,240,100,"A plus",textures->font);
     }
 
 
@@ -154,7 +156,8 @@ void end_graphics(SDL_Renderer *renderer, world_t *world,textures_t *textures, i
     update_screen(renderer); 
 }
 
-void begin_screen(SDL_Renderer *renderer, world_t *world,textures_t *textures){
+
+void ecran_titre(SDL_Renderer *renderer, world_t *world,textures_t *textures){
     clear_renderer(renderer);
     apply_title(renderer, 28, 50,240,100,"Space corridor",textures->font);
     update_screen(renderer);
@@ -162,11 +165,35 @@ void begin_screen(SDL_Renderer *renderer, world_t *world,textures_t *textures){
     apply_title(renderer, 60, 250,170,70,"Press space",textures->font);
     pause(200);
     update_screen(renderer);
-    pause(1000);
-
+    pause(1000); 
+    
 }
 
-void ecran_titre(SDL_Renderer *renderer, world_t *world,textures_t *textures){// a remplacer par un handle event
-        begin_screen(renderer,world,textures);
-    
+void menu(SDL_Renderer *renderer, world_t *world,textures_t *textures){
+
+    //Netoyage de l'écran
+    clear_renderer(renderer);
+    apply_title(renderer, 28, 50,240,100,"Space corridor",textures->font);
+    if(world->menu == 0)
+    {
+        apply_text(renderer, 90, 190,120,50,"Niveau 1",textures->font);
+        apply_title(renderer, 90, 280,120,50,"Niveau 2",textures->font);
+        apply_title(renderer, 90, 370,120,50,"Niveau 3",textures->font);
+    }
+
+    else if(world->menu == 1)
+    {
+        apply_title(renderer, 90, 190,120,50,"Niveau 1",textures->font);
+        apply_text(renderer, 90, 280,120,50,"Niveau 2",textures->font);
+        apply_title(renderer, 90, 370,120,50,"Niveau 3",textures->font);
+    }
+    else if(world->menu == 2)
+    {
+        apply_title(renderer, 90, 190,120,50,"Niveau 1",textures->font);
+        apply_title(renderer, 90, 280,120,50,"Niveau 2",textures->font);
+        apply_text(renderer, 90, 370,120,50,"Niveau 3",textures->font);
+    }
+
+    // On met à jour l'écran
+    update_screen(renderer);
 }
