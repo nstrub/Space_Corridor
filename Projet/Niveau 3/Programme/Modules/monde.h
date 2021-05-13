@@ -102,6 +102,7 @@ struct world_s{
     int vitesse; /*!< Vitesse de déplacement de base des strucures*/
     int desappear; /*!< Variable qui sert à afficher le sprite du vaisseau*/
     int end; /*!< Type de fin de partie*/
+    int game; /*< variable qui gère les différentes parties>*/
 
 };
 

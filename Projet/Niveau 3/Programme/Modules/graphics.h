@@ -154,13 +154,13 @@ void begin_screen(SDL_Renderer *renderer, world_t *world,textures_t *textures);
 
 
 /**
- * @brief test
+ * @brief ecran_titre
  * 
- * @param renderer 
- * @param world 
- * @param textures 
+ * @param renderer le renderer
+ * @param world le monde
+ * @param textures les textures
  */
-void test(SDL_Renderer *renderer, world_t *world,textures_t *textures);
+void ecran_titre(SDL_Renderer *renderer, world_t *world,textures_t *textures);
 
 
 

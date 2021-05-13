@@ -29,36 +29,47 @@ void handle_events(SDL_Event *event,world_t *world){
          
          if(event->type == SDL_KEYDOWN)
          {
-             //si la touche appuyée est 'D'
+             
+            }
+
+            if(world->game != 0)
+            {
+
+                //si Flèche droite est appuyée
+                if(event->key.keysym.sym == SDLK_RIGHT)
+                {
+                    world->vaisseau.x += 6;
+                }
+                //si Flèche gauche est appuyée
+                if(event->key.keysym.sym == SDLK_LEFT)
+                {
+                    world->vaisseau.x += -6;
+                }
+                //si la touche échap est appuyée
+                if(event->key.keysym.sym == SDLK_ESCAPE)
+                {
+                    world->gameover = 1;
+                }
+                //si la flèche du haut est appuyée
+                if(event->key.keysym.sym == SDLK_UP)
+                {
+                    world->vitesse += 2;
+                }
+                //si la flèche du haut est appuyée
+                if(event->key.keysym.sym == SDLK_DOWN)
+                {
+                    world->vitesse -= 2;
+                }
+            }
+            else
+            {
+                //si la touche appuyée est 'D'
             if(event->key.keysym.sym == SDLK_d)
             {
-                 printf("La touche D est appuyée\n");
+                 world->game = 1;
             }
-            //si Flèche droite est appuyée
-            if(event->key.keysym.sym == SDLK_RIGHT)
-            {
-                 world->vaisseau.x += 6;
-            }
-            //si Flèche gauche est appuyée
-            if(event->key.keysym.sym == SDLK_LEFT)
-            {
-                 world->vaisseau.x += -6;
-            }
-            //si la touche échap est appuyée
-            if(event->key.keysym.sym == SDLK_ESCAPE)
-            {
-                world->gameover = 1;
-            }
-            //si la flèche du haut est appuyée
-            if(event->key.keysym.sym == SDLK_UP)
-            {
-                world->vitesse += 2;
-            }
-            //si la flèche du haut est appuyée
-            if(event->key.keysym.sym == SDLK_DOWN)
-            {
-                world->vitesse -= 2;
-            }
+
+
         }
     }
 }

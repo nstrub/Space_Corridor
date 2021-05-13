@@ -49,13 +49,16 @@ int main( int argc, char* args[] )
     
 
 
-    // Début de partie
-    int temps_ecoule = 0;
     //initialisation du jeu
     init(&window,&renderer,&textures,&world);
 
-    test(renderer,&world,&textures);
+    //Ecran titre
+    world.game = 0;
+    ecran_titre(renderer,&world,&textures);
     
+    // Début de partie
+    world.game = 1;
+    int temps_ecoule = 0;
     
     while(!is_game_over(&world)){ //tant que le jeu n'est pas fini
         //Le temps s'écoule

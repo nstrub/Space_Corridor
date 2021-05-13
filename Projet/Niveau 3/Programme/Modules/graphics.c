@@ -159,14 +159,14 @@ void begin_screen(SDL_Renderer *renderer, world_t *world,textures_t *textures){
     apply_title(renderer, 28, 50,240,100,"Space corridor",textures->font);
     update_screen(renderer);
     pause(200);
-    apply_title(renderer, 60, 250,170,70,"Nouvelles partie",textures->font);
+    apply_title(renderer, 60, 250,170,70,"Appuyer sur D",textures->font);
     pause(200);
     update_screen(renderer);
 
 }
 
-void test(SDL_Renderer *renderer, world_t *world,textures_t *textures){// a remplacer par un handle event
-    for(int i = 0; i< 3; i++){
+void ecran_titre(SDL_Renderer *renderer, world_t *world,textures_t *textures){// a remplacer par un handle event
+    while(world->game == 0){
         begin_screen(renderer,world,textures);
         pause(1000);
     }
