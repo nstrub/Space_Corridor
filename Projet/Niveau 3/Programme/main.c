@@ -52,13 +52,19 @@ int main( int argc, char* args[] )
     //initialisation du jeu
     init(&window,&renderer,&textures,&world);
     int temps_ecoule = 0;
+    int temps_soustraire = 0;
     world.game = 0;
     
     
         //Affiche l'écran titre
     while(world.game == 0){
+        // Temps passé dans le menu
+        temps_soustraire = SDL_GetTicks();
+
+        // Affiche l'écran titre
         ecran_titre(renderer,&world,&textures);
 
+        // gestion des événements
         handle_events(&event,&world);
 
         pause(10);

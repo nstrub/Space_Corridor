@@ -29,9 +29,14 @@ void handle_events(SDL_Event *event,world_t *world){
          
         if(event->type == SDL_KEYDOWN)
          {
+             //si la touche échap est appuyée
+            if(event->key.keysym.sym == SDLK_ESCAPE)
+            {
+                world->gameover = 1;
+            }
 
-            //if(world->game != 0)
-            //{
+            if(world->game != 0)
+            {
 
                 //si Flèche droite est appuyée
                 if(event->key.keysym.sym == SDLK_RIGHT)
@@ -43,11 +48,7 @@ void handle_events(SDL_Event *event,world_t *world){
                 {
                     world->vaisseau.x += -6;
                 }
-                //si la touche échap est appuyée
-                if(event->key.keysym.sym == SDLK_ESCAPE)
-                {
-                    world->gameover = 1;
-                }
+
                 //si la flèche du haut est appuyée
                 if(event->key.keysym.sym == SDLK_UP)
                 {
@@ -58,9 +59,9 @@ void handle_events(SDL_Event *event,world_t *world){
                 {
                     world->vitesse -= 2;
                 }
-            //}
-            //if(world->game == 0)
-            //{
+            }
+            if(world->game == 0)
+            {
                 //si la touche appuyée est 'D'
                 if(event->key.keysym.sym == SDLK_SPACE)
                 {
@@ -71,7 +72,7 @@ void handle_events(SDL_Event *event,world_t *world){
 
 
 
-            //}
+            }
         }
     }
 }
