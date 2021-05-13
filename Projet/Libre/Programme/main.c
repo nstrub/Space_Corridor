@@ -43,9 +43,34 @@ int main( int argc, char* args[] )
     SDL_Renderer *renderer;
     SDL_Window *window;
 
-    int temps_ecoule = 0;
+
+
+
+    
+
+
     //initialisation du jeu
     init(&window,&renderer,&textures,&world);
+    int temps_ecoule = 0;
+    int temps_soustraire = 0;
+    world.game = 0;
+    
+    
+        //Affiche l'écran titre
+    while(world.game == 0){
+        // Temps passé dans le menu
+        temps_soustraire = SDL_GetTicks();
+
+        // Affiche l'écran titre
+        ecran_titre(renderer,&world,&textures);
+
+        // gestion des événements
+        handle_events(&event,&world);
+
+        pause(10);
+    
+    }
+    // Début de partie
     
     while(!is_game_over(&world)){ //tant que le jeu n'est pas fini
         //Le temps s'écoule
@@ -64,12 +89,15 @@ int main( int argc, char* args[] )
         pause(10);
     }
     
-    //mettre truc pause à voir
 
+
+
+    //Fin de partie
     end_graphics(renderer,&world,&textures, temps_ecoule);
     
-
+    //On fait une pause de 4 secondes avant de fermer le jeu
     pause(4000);
+    
     //nettoyage final
     clean(window,renderer,&textures,&world);
     

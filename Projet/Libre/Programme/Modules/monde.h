@@ -102,6 +102,7 @@ struct world_s{
     int vitesse; /*!< Vitesse de déplacement de base des strucures*/
     int desappear; /*!< Variable qui sert à afficher le sprite du vaisseau*/
     int end; /*!< Type de fin de partie*/
+    int game; /*< variable qui gère les différentes parties>*/
 
 };
 
@@ -226,14 +227,14 @@ void finish_line(sprite_t *sp1, sprite_t *sp2, world_t *world, int temps);
 
 
 /**
- * @brief Fonction qui met fin à la partie en cas de crash
+ * @brief Fonction qui met fin à la partie si le vaisseau se crash
  * 
  * @param world les données du monde
  */
 void crash(world_t *world);
 
 /**
- * @brief //Fonction qui met fin à la partie au contact d'un asteroid (sera appelé en boucle dans crash)
+ * @brief Fonction qui met fin à la partie en cas de défaite
  * 
  * @param sp1 premier sprite de type sprite_t
  * @param sp2 deuxième sprite de type sprite_t

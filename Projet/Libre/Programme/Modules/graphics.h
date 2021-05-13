@@ -18,6 +18,7 @@
 #include "sdl2-ttf-light.h"
 
 
+
 //Definitions
 
 /**
@@ -141,5 +142,33 @@ void init(SDL_Window **window, SDL_Renderer ** renderer, textures_t *textures, w
  * @param temps le chronomètre du monde
  */
 void end_graphics(SDL_Renderer *renderer, world_t *world,textures_t *textures, int temps);
+
+/**
+ * @brief Ecran au lancement du jeu
+ * 
+ * @param renderer le renderer
+ * @param world le monde
+ * @param textures les textures
+ */
+void begin_screen(SDL_Renderer *renderer, world_t *world,textures_t *textures);
+
+
+
+/**
+ * @brief ecran_titre
+ * 
+ * @param renderer le renderer
+ * @param world le monde
+ * @param textures les textures
+ */
+void ecran_titre(SDL_Renderer *renderer, world_t *world,textures_t *textures);
+
+
+
+
+
+
+
+
 
 #endif

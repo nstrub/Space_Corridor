@@ -27,51 +27,37 @@ void handle_events(SDL_Event *event,world_t *world){
         
         //SI LA TOUCHE ECHAP EST APPUYEE (quitter le jeu)
          
-        if(event->type == SDL_KEYDOWN)
+         if(event->type == SDL_KEYDOWN)
          {
-             //si la touche échap est appuyée
+             //si la touche appuyée est 'D'
+            if(event->key.keysym.sym == SDLK_d)
+            {
+                 printf("La touche D est appuyée\n");
+            }
+            //si Flèche droite est appuyée
+            if(event->key.keysym.sym == SDLK_RIGHT)
+            {
+                 world->vaisseau.x += 6;
+            }
+            //si Flèche gauche est appuyée
+            if(event->key.keysym.sym == SDLK_LEFT)
+            {
+                 world->vaisseau.x += -6;
+            }
+            //si la touche échap est appuyée
             if(event->key.keysym.sym == SDLK_ESCAPE)
             {
                 world->gameover = 1;
             }
-
-            if(world->game != 0)
+            //si la flèche du haut est appuyée
+            if(event->key.keysym.sym == SDLK_UP)
             {
-
-                //si Flèche droite est appuyée
-                if(event->key.keysym.sym == SDLK_RIGHT)
-                {
-                    world->vaisseau.x += 6;
-                }
-                //si Flèche gauche est appuyée
-                if(event->key.keysym.sym == SDLK_LEFT)
-                {
-                    world->vaisseau.x += -6;
-                }
-
-                //si la flèche du haut est appuyée
-                if(event->key.keysym.sym == SDLK_UP)
-                {
-                    world->vitesse += 2;
-                }
-                //si la flèche du haut est appuyée
-                if(event->key.keysym.sym == SDLK_DOWN)
-                {
-                    world->vitesse -= 2;
-                }
+                world->vitesse += 2;
             }
-            if(world->game == 0)
+            //si la flèche du haut est appuyée
+            if(event->key.keysym.sym == SDLK_DOWN)
             {
-                //si la touche appuyée est 'D'
-                if(event->key.keysym.sym == SDLK_SPACE)
-                {
-                 world->game = 1;
-                 printf("d est appuyé");
-                }
-            
-
-
-
+                world->vitesse -= 2;
             }
         }
     }
