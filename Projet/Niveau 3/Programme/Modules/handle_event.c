@@ -27,13 +27,11 @@ void handle_events(SDL_Event *event,world_t *world){
         
         //SI LA TOUCHE ECHAP EST APPUYEE (quitter le jeu)
          
-         if(event->type == SDL_KEYDOWN)
+        if(event->type == SDL_KEYDOWN)
          {
-             
-            }
 
-            if(world->game != 0)
-            {
+            //if(world->game != 0)
+            //{
 
                 //si Flèche droite est appuyée
                 if(event->key.keysym.sym == SDLK_RIGHT)
@@ -60,16 +58,20 @@ void handle_events(SDL_Event *event,world_t *world){
                 {
                     world->vitesse -= 2;
                 }
-            }
-            else
-            {
+            //}
+            //if(world->game == 0)
+            //{
                 //si la touche appuyée est 'D'
-            if(event->key.keysym.sym == SDLK_d)
-            {
+                if(event->key.keysym.sym == SDLK_SPACE)
+                {
                  world->game = 1;
-            }
+                 printf("d est appuyé");
+                }
+            
 
 
+
+            //}
         }
     }
 }
