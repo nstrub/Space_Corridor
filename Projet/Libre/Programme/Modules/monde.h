@@ -104,13 +104,15 @@ struct world_s{
     sprite_t arrivee; /*! < Ajout de la ligne d'arrivée de type sprite_t au monde */
     sprite_t mur; /*! <Ajout du mur de meteorite de type sprite_t au monde */
     sprite_t murs[MURS_NBR]; /*! <Ajout des murs de meteorites de type sprite_t au monde.*/
+    sprite_t coin; /*! <Ajout de la pièce. */
 
     int gameover; /*!< Champ indiquant si l'on est à la fin du jeu */
     int vitesse; /*!< Vitesse de déplacement de base des strucures*/
     int desappear; /*!< Variable qui sert à afficher le sprite du vaisseau*/
     int end; /*!< Type de fin de partie*/
-    int game; /*< variable qui gère les différentes parties>*/
-    int menu; /*< Gère les données affichées dans le menu<*/
+    int game; /*< variable qui gère les différentes parties.*/
+    int menu; /*< Gère les données affichées dans le menu.*/
+    int coins; /*<Gère le nombre de pièce qu'a collecter le joueur*/
 
 };
 
@@ -172,6 +174,13 @@ void init_sprite(sprite_t *sprite, int x, int y, int w, int h);
 void init_walls(world_t *world);
 
 /**
+ * @brief Fonction qui initialise une pièce dans le monde
+ * 
+ * @param world 
+ */
+void init_coin(world_t *world);
+
+/**
  * \brief La fonction nettoie les données du monde
  * \param world les données du monde
  */
@@ -222,7 +231,12 @@ void handle_sprite_collision(sprite_t *sp1, sprite_t *sp2, world_t *world);
  */
 void update_walls(world_t *world);
 
-
+/**
+ * @brief Fonction qui met à jour la piece en fonction de la vitesse du monde...
+ * 
+ * @param world Les données du monde
+ */
+void update_piece(world_t *world);
 
 /**
  * @brief Fonction qui met fin à la partie en cas de victoire
@@ -250,6 +264,14 @@ void crash(world_t *world);
  */
 void collision_meteore(sprite_t *sp1, sprite_t *sp2, world_t *world);
 
+/**
+ * @brief Fonction qui ajoute 1 au nombre de pièce du joueur
+ * 
+ * @param sp1 premier sprite
+ * @param sp2 deuxième sprite
+ * @param world les données du monde
+ */
+void collision_piece(sprite_t *sp1, sprite_t *sp2, world_t *world);
 
 /**
  * @brief Fin de partie

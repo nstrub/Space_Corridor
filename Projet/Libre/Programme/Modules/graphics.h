@@ -30,6 +30,7 @@ struct textures_s{
     SDL_Texture* vaisseau; /*!< Texture liée à l'image du vaisseau. */
     SDL_Texture* arrivee; /*!< Texture liée à l'image de la ligne d'arrivée */
     SDL_Texture* meteorite; /*!< Texture liée à l'image de meteorite */
+    SDL_Texture* coin; /*!< Texture liée à l'image de la pièce */
     TTF_Font* font; /*!< Police d'écriture pour l'affichage dans le jeu */
 };
 
@@ -101,6 +102,16 @@ void crea_wall(textures_t *textures,SDL_Renderer *renderer,world_t *world,int x,
  * @param textures les textures
  */
 void apply_walls(SDL_Renderer *renderer, textures_t *textures, world_t *world);
+
+/**
+ * @brief Fonction qui créer la pièce et l'apply
+ * 
+ * @param textures les textures
+ * @param renderer le renderer
+ * @param world les données du monde
+ */
+//void crea_piece(textures_t *textures, SDL_Renderer *renderer, world_t *world){
+
 
 /**
  * \brief La fonction rafraichit l'écran en fonction de l'état des données du monde

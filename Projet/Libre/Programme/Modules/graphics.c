@@ -19,6 +19,7 @@ void clean_textures(textures_t *textures){
     clean_texture(textures->vaisseau);
     clean_texture(textures->arrivee);
     clean_texture(textures->meteorite);
+    clean_texture(textures->coin);
 }
 
 
@@ -28,6 +29,7 @@ void  init_textures(SDL_Renderer *renderer, textures_t *textures){
     textures->vaisseau = load_image( "ressources/spaceship.bmp", renderer);
     textures->arrivee = load_image( "ressources/finish_line.bmp", renderer);
     textures->meteorite = load_image( "ressources/meteorite.bmp", renderer);  
+    textures->coin = load_image("ressources/coin.bmp", renderer);
     textures->font = load_font ("ressources/arial.ttf",14);
 }
 
@@ -64,6 +66,10 @@ void apply_walls(SDL_Renderer *renderer, textures_t *textures, world_t *world){
     }
 }
 
+// //Creation de la pièce et l'apply
+// void crea_piece(textures_t *textures, SDL_Renderer *renderer, world_t *world){
+//     apply_texture(textures->coin, renderer, world->coin.x, world->coin.y);
+// }
 
 //La fonction rafraichit l'écran en fonction de l'état des données du monde
 void refresh_graphics(SDL_Renderer *renderer, world_t *world,textures_t *textures, int temps){
@@ -83,6 +89,10 @@ void refresh_graphics(SDL_Renderer *renderer, world_t *world,textures_t *texture
 
     //Affichage et applique les collisions des murs
     apply_walls(renderer, textures, world);
+
+    // //Affichage + applique la piece
+    // crea_piece(textures->coin,renderer,world);
+    apply_sprite(renderer, textures->coin,&world->coin);
 
     char tempstr[20];
     sprintf(tempstr, "%d", temps/1000);

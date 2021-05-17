@@ -41,6 +41,8 @@ void init_data(world_t * world){
 
     init_walls(world);
 
+    init_coin(world);
+
     
     
     
@@ -69,6 +71,10 @@ void init_walls(world_t *world){
         init_sprite(&world->murs[5],252,-672,96,192);
 }
 
+void init_coin(world_t *world){
+    init_sprite(&world->coin,50,50,SCREEN_WIDTH/2,SCREEN_HEIGHT/2);
+}
+
 //fonction qui affiche dans le terminal les coordonées d'un sprite.
 void print_sprite(sprite_t *sprite){
     printf("Les coordonnées du sprite x/y sont : %d et %d\n",sprite->x,sprite->y);
@@ -91,6 +97,8 @@ void update_data(world_t *world, int temps){
 
     update_walls(world);
 
+    update_piece(world);
+
     //Sortie de jeu du vaisseau
     depacement(world);
 
@@ -101,6 +109,9 @@ void update_data(world_t *world, int temps){
 
     //Si le vaisseau ce crash : fin du jeu
     crash(world);
+
+    //Si le joueur touche une pièce
+    collision_piece(&world->vaisseau,&world->coin,world);
 
 }
 
@@ -149,6 +160,11 @@ void update_walls(world_t *world){
     }
 }
 
+//Fonction qui met à jour la pièce en fonction de la vitesse du monde
+void update_piece(world_t *world){
+    world->coin.y += world->vitesse;
+}
+
 //Fonction qui met fin à la partie en cas de victoire
 void finish_line(sprite_t *sp1, sprite_t *sp2, world_t *world, int temps){
     if(sprites_collide(sp1,sp2)){// Le vaisseau atteint la ligne d'arrivée
@@ -172,6 +188,13 @@ void collision_meteore(sprite_t *sp1, sprite_t *sp2, world_t *world){
         world->end = 1;
         printf("\n\n\n                   You loose\n\n\n");
 
+    }
+}
+
+void collision_piece(sprite_t *sp1, sprite_t *sp2, world_t *world){
+    if(sprites_collide(sp1,sp2)){
+        world->coins ++;
+        printf("\n\nbruit_de_pièce.mp3\n\n");
     }
 }
 
