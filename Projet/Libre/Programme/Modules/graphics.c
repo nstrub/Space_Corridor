@@ -66,10 +66,7 @@ void apply_walls(SDL_Renderer *renderer, textures_t *textures, world_t *world){
     }
 }
 
-// //Creation de la pièce et l'apply
-// void crea_piece(textures_t *textures, SDL_Renderer *renderer, world_t *world){
-//     apply_texture(textures->coin, renderer, world->coin.x, world->coin.y);
-// }
+
 
 //La fonction rafraichit l'écran en fonction de l'état des données du monde
 void refresh_graphics(SDL_Renderer *renderer, world_t *world,textures_t *textures, int temps){
@@ -91,14 +88,19 @@ void refresh_graphics(SDL_Renderer *renderer, world_t *world,textures_t *texture
     apply_walls(renderer, textures, world);
 
     // //Affichage + applique la piece
-    // crea_piece(textures->coin,renderer,world);
     apply_sprite(renderer, textures->coin,&world->coin);
 
     char tempstr[20];
     sprintf(tempstr, "%d", temps/1000);
     //On applique le texte
+        //Pour le temps :
     apply_text(renderer, 230, 0,60,60,tempstr,textures->font);
     apply_text(renderer, 140, 0,80,60,"Temps :",textures->font);
+        //On affiche les pièces :
+    char mabite[20];
+    sprintf(mabite, "%d", world->coins);
+    apply_text(renderer, 90, 0,55,60,mabite,textures->font);
+    apply_text(renderer, 5, 0,80,60,"Coins :",textures->font);
 
     // on met à jour l'écran
     update_screen(renderer);

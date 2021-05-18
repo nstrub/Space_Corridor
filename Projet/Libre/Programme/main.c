@@ -55,7 +55,7 @@ int main( int argc, char* args[] )
     int temps_soustraire = 0;
     world.game = 0;
     world.menu = 0;
-    
+    world.coins = 0;
     
         //Affiche l'écran titre
     while(world.game == 0 && !is_game_over(&world)){

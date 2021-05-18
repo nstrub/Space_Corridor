@@ -169,6 +169,7 @@ void update_piece(world_t *world){
 void finish_line(sprite_t *sp1, sprite_t *sp2, world_t *world, int temps){
     if(sprites_collide(sp1,sp2)){// Le vaisseau atteint la ligne d'arrivée
         printf("VOUS AVEZ GAGNé(e) EN %d secondes !!! ggwp\n",temps/1000);
+        printf("Nombre de pièce : %d\n",world->coins);
         fin_de_partie(world);
         world->end = 0;
     }
