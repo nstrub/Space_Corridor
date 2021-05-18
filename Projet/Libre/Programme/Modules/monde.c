@@ -72,7 +72,7 @@ void init_walls(world_t *world){
 }
 
 void init_coin(world_t *world){
-    init_sprite(&world->coin,50,50,SCREEN_WIDTH/2,SCREEN_HEIGHT/2);
+    init_sprite(&world->coin,150,50,METEORITE_SIZE,METEORITE_SIZE);
 }
 
 //fonction qui affiche dans le terminal les coordonées d'un sprite.
