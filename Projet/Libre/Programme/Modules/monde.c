@@ -72,7 +72,7 @@ void init_walls(world_t *world){
 }
 
 void init_coin(world_t *world){
-    init_sprite(&world->coin,50,50,SCREEN_WIDTH/2,SCREEN_HEIGHT/2);
+    init_sprite(&world->coin,150,50,METEORITE_SIZE,METEORITE_SIZE);
 }
 
 //fonction qui affiche dans le terminal les coordonées d'un sprite.
@@ -169,6 +169,7 @@ void update_piece(world_t *world){
 void finish_line(sprite_t *sp1, sprite_t *sp2, world_t *world, int temps){
     if(sprites_collide(sp1,sp2)){// Le vaisseau atteint la ligne d'arrivée
         printf("VOUS AVEZ GAGNé(e) EN %d secondes !!! ggwp\n",temps/1000);
+        printf("Nombre de pièce : %d\n",world->coins);
         fin_de_partie(world);
         world->end = 0;
     }

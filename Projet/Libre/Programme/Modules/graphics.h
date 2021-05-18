@@ -104,16 +104,6 @@ void crea_wall(textures_t *textures,SDL_Renderer *renderer,world_t *world,int x,
 void apply_walls(SDL_Renderer *renderer, textures_t *textures, world_t *world);
 
 /**
- * @brief Fonction qui créer la pièce et l'apply
- * 
- * @param textures les textures
- * @param renderer le renderer
- * @param world les données du monde
- */
-//void crea_piece(textures_t *textures, SDL_Renderer *renderer, world_t *world){
-
-
-/**
  * \brief La fonction rafraichit l'écran en fonction de l'état des données du monde
  * \param renderer le renderer lié à l'écran de jeu
  * \param world les données du monde
