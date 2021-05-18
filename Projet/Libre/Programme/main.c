@@ -85,10 +85,6 @@ int main( int argc, char* args[] )
         temps_soustraire = SDL_GetTicks();
 
         pause(10);
-
-        if(world.gameover == 1){
-
-        }
         
     }
 
