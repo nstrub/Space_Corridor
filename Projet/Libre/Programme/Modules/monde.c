@@ -16,16 +16,11 @@ void init_data(world_t * world){
 
     
 
-    //Initialisation du vaisseau dans le monde
-    init_sprite(&world->vaisseau, SCREEN_WIDTH/2 - SHIP_SIZE/2, SCREEN_HEIGHT - SHIP_SIZE*2, SHIP_SIZE, SHIP_SIZE);
-
-    //Initialisation de la ligne d'arrivée
-    init_sprite(&world->arrivee, 0, -960, SCREEN_WIDTH, FINISH_LINE_HEIGHT);
+    
  
     // Mur et meteores
     //init_sprite(&world->mur,SCREEN_WIDTH/2 - 3*METEORITE_SIZE/2, SCREEN_HEIGHT/2 - 7*METEORITE_SIZE/2, METEORITE_SIZE * 3, METEORITE_SIZE  * 7 );
 
-    print_sprite(&world->vaisseau);
 
     //on n'est pas à la fin du jeu
     world->gameover = 0;
@@ -36,19 +31,34 @@ void init_data(world_t * world){
     //On met la valeur end à une valeur différente de 0 et 1
     world->end = 2;
 
+    // On met les autres valeurs à zéro.
+    world->game = 0;
+    world->menu = 0;
+    world->coins = 0;
+
     // Vitesse de base
     world->vitesse = INITIAL_SPEED;
 
+      
+}
+
+void init_game(world_t * world){
+
+
+    //Initialisation du vaisseau dans le monde
+    init_sprite(&world->vaisseau, SCREEN_WIDTH/2 - SHIP_SIZE/2, SCREEN_HEIGHT - SHIP_SIZE*2, SHIP_SIZE, SHIP_SIZE);
+
+    //Initialisation de la ligne d'arrivée
+    init_line(world);
+
+    //print_sprite(&world->vaisseau);
+
+
+    // On initailise les murs de météores propre au niveau
     init_walls(world);
 
-    init_coin(world);
-
-    
-    
-    
-
-
-    
+    // On initailise les pièces de météores propre au niveau
+    init_coin(world);  
 }
 
 
@@ -61,18 +71,77 @@ void init_sprite(sprite_t *sprite, int x, int y, int w, int h){
     sprite->h = h;
 }
 
-// //La fonction qui initialise le parcours de murs
+
+void init_line(world_t *world){
+
+    // Si le joueur choisi le niveau 1
+    if(world->menu == 0){
+
+        init_sprite(&world->arrivee, 0, -960, SCREEN_WIDTH, FINISH_LINE_HEIGHT);
+
+    }
+
+    // Si le joueur choisi le niveau 2
+    else if(world->menu == 1){
+
+    }
+
+    // Si le joueur choisi le niveau 3
+    else if(world->menu == 2){
+        
+    }
+}
+
+//La fonction qui initialise le parcours de murs
 void init_walls(world_t *world){
-        init_sprite(&world->murs[0],48,0,96,192);                      
-        init_sprite(&world->murs[1],252,0,96,192);
-        init_sprite(&world->murs[2],16,-352,32,160);
-        init_sprite(&world->murs[3],188,-352,224,160);
-        init_sprite(&world->murs[4],48,-672,96,192);
+
+    // Si le joueur choisi le niveau 1
+    if(world->menu == 0){
+
+        init_sprite(&world->murs[0],0,METEORITE_SIZE*2,METEORITE_SIZE*2,METEORITE_SIZE*2);                      
+        init_sprite(&world->murs[1],METEORITE_SIZE*7.5,METEORITE_SIZE*2,METEORITE_SIZE*2,METEORITE_SIZE*2);
+        //init_sprite(&world->murs[2],16,-352,32,160);
+        //init_sprite(&world->murs[3],188,-352,224,160);
+        init_sprite(&world->murs[4],METEORITE_SIZE*11,-672,96,192);
         init_sprite(&world->murs[5],252,-672,96,192);
+
+        //On reseigne le nombre de murs
+        //world->nombre_murs = 10;
+
+    }
+
+    // Si le joueur choisi le niveau 2
+    else if(world->menu == 1){
+
+    }
+
+    // Si le joueur choisi le niveau 3
+    else if(world->menu == 2){
+        
+    }
+    
 }
 
 void init_coin(world_t *world){
-    init_sprite(&world->coin,150,50,METEORITE_SIZE,METEORITE_SIZE);
+
+
+    // Si le joueur choisi le niveau 1
+    if(world->menu == 0){
+
+        init_sprite(&world->coin,150,50,METEORITE_SIZE,METEORITE_SIZE);
+
+    }
+
+    // Si le joueur choisi le niveau 2
+    else if(world->menu == 1){
+
+    }
+
+    // Si le joueur choisi le niveau 3
+    else if(world->menu == 2){
+        
+    }
+    
 }
 
 //fonction qui affiche dans le terminal les coordonées d'un sprite.

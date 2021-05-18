@@ -67,7 +67,9 @@ void handle_events(SDL_Event *event,world_t *world){
                 //si la touche appuyée est 'espace'
                 if(event->key.keysym.sym == SDLK_SPACE)
                 {
+
                  world->game = 1;
+                 
                 }
             }
 

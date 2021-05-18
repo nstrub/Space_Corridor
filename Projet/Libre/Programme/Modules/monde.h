@@ -110,9 +110,10 @@ struct world_s{
     int vitesse; /*!< Vitesse de déplacement de base des strucures*/
     int desappear; /*!< Variable qui sert à afficher le sprite du vaisseau*/
     int end; /*!< Type de fin de partie*/
-    int game; /*< variable qui gère les différentes parties.*/
-    int menu; /*< Gère les données affichées dans le menu.*/
-    int coins; /*<Gère le nombre de pièce qu'a collecter le joueur*/
+    int game; /*!< variable qui gère les différentes parties.*/
+    int menu; /*!< Gère les données affichées dans le menu.*/
+    int coins; /*!<Gère le nombre de pièce qu'a collecter le joueur.*/
+    //int nombre_murs; /*!<Nombre de mur effectifs.*/
 
 };
 
@@ -148,6 +149,22 @@ typedef struct world_s world_t;
  */
 
 void init_data(world_t * world);
+
+
+/**
+ * @brief  La fonction initialise les données de la partie
+ * 
+ * @param world les données du monde
+ */
+void init_game(world_t * world);
+
+
+/**
+ * @brief La fonction initialise la ligne d'arrivée
+ * 
+ * @param world Les données du monde
+ */
+void init_line(world_t *world);
 
 /**
  * \brief fonction qui affiche dans le terminal les coordonées d'un sprite
