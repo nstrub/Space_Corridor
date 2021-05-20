@@ -81,7 +81,7 @@ int main( int argc, char* args[] )
         // Temps passé dans le menu
         temps_soustraire = SDL_GetTicks();
 
-        pause(30);
+        pause(10);
         
     }
 

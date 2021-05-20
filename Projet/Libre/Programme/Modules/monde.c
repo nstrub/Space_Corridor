@@ -92,7 +92,7 @@ void init_line(world_t *world){
 
     // Si le joueur choisi le niveau 3
     else if(world->menu == 2){
-        
+        init_sprite(&world->arrivee, 0, -METEORITE_SIZE*70, SCREEN_WIDTH, FINISH_LINE_HEIGHT);
     }
 }
 
@@ -107,7 +107,7 @@ void init_walls(world_t *world){
         init_sprite(&world->murs[2],METEORITE_SIZE*2,-METEORITE_SIZE*10,METEORITE_SIZE*5,METEORITE_SIZE*2);
         init_sprite(&world->murs[3],0,-METEORITE_SIZE*25,METEORITE_SIZE*3,METEORITE_SIZE*7);
         init_sprite(&world->murs[4],METEORITE_SIZE*6.5,-METEORITE_SIZE*25,METEORITE_SIZE*3,METEORITE_SIZE*7);
-        
+        init_sprite(&world->murs[5],0,METEORITE_SIZE*25,METEORITE_SIZE*10,METEORITE_SIZE); 
 
     }
 
@@ -119,11 +119,19 @@ void init_walls(world_t *world){
         init_sprite(&world->murs[2],METEORITE_SIZE*2,-METEORITE_SIZE*39,METEORITE_SIZE*5,METEORITE_SIZE*2);
         init_sprite(&world->murs[3],0,-METEORITE_SIZE*25,METEORITE_SIZE*4,METEORITE_SIZE*7);
         init_sprite(&world->murs[4],METEORITE_SIZE*5.5,-METEORITE_SIZE*25,METEORITE_SIZE*4,METEORITE_SIZE*7);
+        init_sprite(&world->murs[5],0,METEORITE_SIZE*25,METEORITE_SIZE*10,METEORITE_SIZE); 
 
     }
 
     // Si le joueur choisi le niveau 3
     else if(world->menu == 2){
+        
+        init_sprite(&world->murs[0],0,-METEORITE_SIZE*26,METEORITE_SIZE*7,METEORITE_SIZE*8);  
+        init_sprite(&world->murs[1],METEORITE_SIZE*2.5,-METEORITE_SIZE*47,METEORITE_SIZE*7,METEORITE_SIZE*8);
+        init_sprite(&world->murs[2],0,-METEORITE_SIZE*47,METEORITE_SIZE*1,METEORITE_SIZE*2);
+        init_sprite(&world->murs[3],0,METEORITE_SIZE*4,METEORITE_SIZE*3,METEORITE_SIZE*2);                      
+        init_sprite(&world->murs[4],METEORITE_SIZE*1.25,-METEORITE_SIZE*8,METEORITE_SIZE*5,METEORITE_SIZE*8);
+        init_sprite(&world->murs[5],0,METEORITE_SIZE*25,METEORITE_SIZE,METEORITE_SIZE);
         
     }
     
@@ -145,7 +153,7 @@ void init_coin(world_t *world){
 
     // Si le joueur choisi le niveau 3
     else if(world->menu == 2){
-        
+        init_sprite(&world->coin,METEORITE_SIZE*0.25,-METEORITE_SIZE*5,METEORITE_SIZE,METEORITE_SIZE);
     }
     
 }
