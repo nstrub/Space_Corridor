@@ -81,14 +81,18 @@ void refresh_graphics(SDL_Renderer *renderer, world_t *world,textures_t *texture
         apply_sprite(renderer, textures->vaisseau, &world->vaisseau);   
     }
 
+    // La pièce est affichée si rentré ici
+    if(world->desappear_coin != 1){
+        apply_sprite(renderer, textures->coin, &world->coin);   
+    }
+
+
     //affichage de la ligne d'arrivé
     apply_sprite(renderer, textures->arrivee, &world->arrivee);         
 
     //Affichage et applique les collisions des murs
     apply_walls(renderer, textures, world);
 
-    // //Affichage + applique la piece
-    apply_sprite(renderer, textures->coin,&world->coin);
 
     char tempstr[20];
     sprintf(tempstr, "%d", temps/1000);
@@ -96,11 +100,11 @@ void refresh_graphics(SDL_Renderer *renderer, world_t *world,textures_t *texture
         //Pour le temps :
     apply_text(renderer, 230, 0,60,60,tempstr,textures->font);
     apply_text(renderer, 140, 0,80,60,"Temps :",textures->font);
-        //On affiche les pièces :
-    char mabite[20];
-    sprintf(mabite, "%d", world->coins);
-    apply_text(renderer, 90, 0,55,60,mabite,textures->font);
-    apply_text(renderer, 5, 0,80,60,"Coins :",textures->font);
+        //On affiche si le secret à été trouvé :
+    apply_text(renderer, 5, 0,80,60,"Secret :",textures->font);
+    if(world->secret == 1){
+        apply_text(renderer, 5, 50,80,60,"OK !",textures->font);
+    }
 
     // on met à jour l'écran
     update_screen(renderer);
