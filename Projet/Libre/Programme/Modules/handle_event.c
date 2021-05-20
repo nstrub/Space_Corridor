@@ -61,14 +61,14 @@ void handle_events(SDL_Event *event,world_t *world){
                 }
             }
 
-            // Dans l'écran titre
-            if(world->game == 0)
+            
+            //si la touche appuyée est 'espace'
+            if(event->key.keysym.sym == SDLK_SPACE)
             {
-                //si la touche appuyée est 'espace'
-                if(event->key.keysym.sym == SDLK_SPACE)
+                // Dans l'écran titre
+                if(world->game == 0)
                 {
-
-                 world->game = 1;
+                    world->game = 1;
                  
                 }
             }

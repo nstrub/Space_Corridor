@@ -30,6 +30,9 @@ void init_data(world_t * world){
     world->desappear_coin = 0;
 
 
+    world->secret = 0;
+
+
     //On met la valeur end à une valeur différente de 0 et 1
     world->end = 2;
 
@@ -128,7 +131,7 @@ void init_walls(world_t *world){
 
 void init_coin(world_t *world){
 
-    world->secret = 0;
+    
     // Si le joueur choisi le niveau 1
     if(world->menu == 0){
         init_sprite(&world->coin,METEORITE_SIZE*4.25,-METEORITE_SIZE*35,METEORITE_SIZE,METEORITE_SIZE);
