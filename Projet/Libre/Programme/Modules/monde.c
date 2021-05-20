@@ -131,7 +131,7 @@ void init_coin(world_t *world){
     world->secret = 0;
     // Si le joueur choisi le niveau 1
     if(world->menu == 0){
-        init_sprite(&world->coin,METEORITE_SIZE*4,25,-METEORITE_SIZE*35,METEORITE_SIZE,METEORITE_SIZE);
+        init_sprite(&world->coin,METEORITE_SIZE*4.25,-METEORITE_SIZE*35,METEORITE_SIZE,METEORITE_SIZE);
 
     }
 
