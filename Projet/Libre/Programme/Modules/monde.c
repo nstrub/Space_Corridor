@@ -140,7 +140,7 @@ void init_coin(world_t *world){
 
     // Si le joueur choisi le niveau 2
     else if(world->menu == 1){
-        init_sprite(&world->coin,METEORITE_SIZE*4.25,-METEORITE_SIZE*25,METEORITE_SIZE,METEORITE_SIZE);
+        init_sprite(&world->coin,METEORITE_SIZE*4.25,METEORITE_SIZE*20,METEORITE_SIZE,METEORITE_SIZE);
     }
 
     // Si le joueur choisi le niveau 3
