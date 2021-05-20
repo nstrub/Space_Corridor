@@ -105,6 +105,11 @@ void refresh_graphics(SDL_Renderer *renderer, world_t *world,textures_t *texture
     if(world->secret == 1){
         apply_text(renderer, 5, 50,80,60,"OK !",textures->font);
     }
+        //Affichage du score
+    apply_text(renderer, 5, SCREEN_HEIGHT-80,40,50,"Score :",textures->font);
+    char score[200];
+    sprintf(score, "%d", world->score);
+    apply_text(renderer,5, SCREEN_HEIGHT-40, 40,40,score,textures->font);
 
     // on met à jour l'écran
     update_screen(renderer);
@@ -148,6 +153,12 @@ void end_graphics(SDL_Renderer *renderer, world_t *world,textures_t *textures, i
         apply_text(renderer, 10, 335,70,70,tempstr,textures->font);
         apply_text(renderer, 30, 200,240,100,"Victoire en :",textures->font);
         apply_text(renderer, 80, 330,190,80,"Sec",textures->font);
+            //On affiche le SCORE
+        apply_text(renderer, 100, 10, 120, 140,"Score :",textures->font);
+        char score[200];
+        sprintf(score, "%d", world->score);
+        apply_text(renderer, 100, 120, 120, 120,score,textures->font);
+
 
     }
 
