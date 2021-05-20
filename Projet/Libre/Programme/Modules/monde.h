@@ -114,6 +114,7 @@ struct world_s{
     int game; /*!< variable qui gère les différentes parties.*/
     int menu; /*!< Gère les données affichées dans le menu.*/
     int secret; /*!<Regarde si le joueur à trouvé la pièce secrète*/
+    int score; /*!<Compte le score du joueur*/
     //int nombre_murs; /*!<Nombre de mur effectifs.*/
 
 };

@@ -43,6 +43,9 @@ void init_data(world_t * world){
     // Vitesse de base
     world->vitesse = INITIAL_SPEED;
 
+    //On initialise le score
+    world->score = 1500;
+
       
 }
 
@@ -196,6 +199,8 @@ void update_data(world_t *world, int temps){
     //Si le joueur touche une pièce
     collision_piece(&world->vaisseau,&world->coin,world);
 
+    world->score -= 1;
+
 }
 
 //Fonction qui gère la collision entre les sprites
@@ -252,7 +257,7 @@ void update_piece(world_t *world){
 void finish_line(sprite_t *sp1, sprite_t *sp2, world_t *world, int temps){
     if(sprites_collide(sp1,sp2)){// Le vaisseau atteint la ligne d'arrivée
         printf("VOUS AVEZ GAGNé(e) EN %d secondes !!! ggwp\n",temps/1000);
-        printf("%d\n",world->secret);
+        printf("VOTRE SCORE : %d\n\n",world->score);
         if(world->secret ==! 0){
             printf("W O W\nVous avez trouvé le secret :o !!! Vous êtes vraiment trop fortiche !!!\n");
         }
@@ -286,7 +291,8 @@ void collision_piece(sprite_t *sp1, sprite_t *sp2, world_t *world){
         world->secret = 1;                      //Le joueur trouve le secret !
         printf("\n\nbruit_de_pièce.mp3\n\n");   //On affiche dans la console également
         world->desappear_coin = 1;              //On fait disparaître la pièce
-        init_sprite(&world->coin,0,0,0,0);   //On donne des collisions nulles au sprite
+        init_sprite(&world->coin,0,0,0,0);      //On donne des collisions nulles au sprite
+        world->score += 300;                    //Récompense si la pièce est trouvée
     }
 }
 
