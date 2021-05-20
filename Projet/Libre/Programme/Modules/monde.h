@@ -113,7 +113,6 @@ struct world_s{
     int game; /*!< variable qui gère les différentes parties.*/
     int menu; /*!< Gère les données affichées dans le menu.*/
     int coins; /*!<Gère le nombre de pièce qu'a collecter le joueur.*/
-    //int nombre_murs; /*!<Nombre de mur effectifs.*/
 
 };
 

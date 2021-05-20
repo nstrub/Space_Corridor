@@ -150,10 +150,9 @@ void end_graphics(SDL_Renderer *renderer, world_t *world,textures_t *textures, i
  * @brief ecran_titre
  * 
  * @param renderer le renderer
- * @param world le monde
  * @param textures les textures
  */
-void ecran_titre(SDL_Renderer *renderer, world_t *world,textures_t *textures);
+void ecran_titre(SDL_Renderer *renderer,textures_t *textures);
 
 
 /**

@@ -77,13 +77,13 @@ void init_line(world_t *world){
     // Si le joueur choisi le niveau 1
     if(world->menu == 0){
 
-        init_sprite(&world->arrivee, 0, -960, SCREEN_WIDTH, FINISH_LINE_HEIGHT);
+        init_sprite(&world->arrivee, 0, -METEORITE_SIZE*40, SCREEN_WIDTH, FINISH_LINE_HEIGHT);
 
     }
 
     // Si le joueur choisi le niveau 2
     else if(world->menu == 1){
-
+        init_sprite(&world->arrivee, 0, -METEORITE_SIZE*40, SCREEN_WIDTH, FINISH_LINE_HEIGHT);
     }
 
     // Si le joueur choisi le niveau 3
@@ -100,18 +100,21 @@ void init_walls(world_t *world){
 
         init_sprite(&world->murs[0],0,METEORITE_SIZE*2,METEORITE_SIZE*2,METEORITE_SIZE*2);                      
         init_sprite(&world->murs[1],METEORITE_SIZE*7.5,METEORITE_SIZE*2,METEORITE_SIZE*2,METEORITE_SIZE*2);
-        //init_sprite(&world->murs[2],16,-352,32,160);
-        //init_sprite(&world->murs[3],188,-352,224,160);
-        init_sprite(&world->murs[4],METEORITE_SIZE*11,-672,96,192);
-        init_sprite(&world->murs[5],252,-672,96,192);
-
-        //On reseigne le nombre de murs
-        //world->nombre_murs = 10;
+        init_sprite(&world->murs[2],METEORITE_SIZE*2,-METEORITE_SIZE*10,METEORITE_SIZE*5,METEORITE_SIZE*2);
+        init_sprite(&world->murs[3],0,-METEORITE_SIZE*25,METEORITE_SIZE*3,METEORITE_SIZE*7);
+        init_sprite(&world->murs[4],METEORITE_SIZE*6.5,-METEORITE_SIZE*25,METEORITE_SIZE*3,METEORITE_SIZE*7);
+        
 
     }
 
     // Si le joueur choisi le niveau 2
     else if(world->menu == 1){
+
+        init_sprite(&world->murs[0],0,METEORITE_SIZE*2,METEORITE_SIZE*5,METEORITE_SIZE);                      
+        init_sprite(&world->murs[1],METEORITE_SIZE*4.5,-METEORITE_SIZE*10,METEORITE_SIZE*5,METEORITE_SIZE);
+        init_sprite(&world->murs[2],METEORITE_SIZE*2,-METEORITE_SIZE*39,METEORITE_SIZE*5,METEORITE_SIZE*2);
+        init_sprite(&world->murs[3],0,-METEORITE_SIZE*25,METEORITE_SIZE*4,METEORITE_SIZE*7);
+        init_sprite(&world->murs[4],METEORITE_SIZE*5.5,-METEORITE_SIZE*25,METEORITE_SIZE*4,METEORITE_SIZE*7);
 
     }
 
@@ -127,14 +130,13 @@ void init_coin(world_t *world){
 
     // Si le joueur choisi le niveau 1
     if(world->menu == 0){
-
-        init_sprite(&world->coin,150,50,METEORITE_SIZE,METEORITE_SIZE);
+        init_sprite(&world->coin,METEORITE_SIZE*4,25,-METEORITE_SIZE*35,METEORITE_SIZE,METEORITE_SIZE);
 
     }
 
     // Si le joueur choisi le niveau 2
     else if(world->menu == 1){
-
+        init_sprite(&world->coin,METEORITE_SIZE*4.25,-METEORITE_SIZE*25,METEORITE_SIZE,METEORITE_SIZE);
     }
 
     // Si le joueur choisi le niveau 3
@@ -162,7 +164,7 @@ void update_data(world_t *world, int temps){
     world->arrivee.y += world->vitesse ;
 
     // Déplacement du mur de météore
-    world->mur.y += world->vitesse ;
+    //world->mur.y += world->vitesse ;
 
     update_walls(world);
 

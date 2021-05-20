@@ -60,7 +60,7 @@ void crea_wall(textures_t *textures,SDL_Renderer *renderer,world_t *world,int x,
 
 //Fonction qui va répéter crea_wall autant de fois qu'il y a de murs pour créé le niveau
 void apply_walls(SDL_Renderer *renderer, textures_t *textures, world_t *world){
-    for(int i=0;i<MURS_NBR;i++){
+    for(int i=0;i< MURS_NBR;i++){
         // Appel de crea_wall dans la boucle
         crea_wall(textures,renderer,world, world->murs[i].x,world->murs[i].y,world->murs[i].h/METEORITE_SIZE,world->murs[i].w/METEORITE_SIZE);
     }
@@ -169,7 +169,7 @@ void end_graphics(SDL_Renderer *renderer, world_t *world,textures_t *textures, i
 }
 
 
-void ecran_titre(SDL_Renderer *renderer, world_t *world,textures_t *textures){
+void ecran_titre(SDL_Renderer *renderer,textures_t *textures){
     clear_renderer(renderer);
     apply_title(renderer, 28, 50,240,100,"Space corridor",textures->font);
     update_screen(renderer);

@@ -59,7 +59,7 @@ int main( int argc, char* args[] )
         
 
         // Affiche l'écran titre
-        ecran_titre(renderer,&world,&textures);
+        ecran_titre(renderer,&textures);
 
         // gestion des événements
         handle_events(&event,&world);
@@ -81,7 +81,7 @@ int main( int argc, char* args[] )
         // Temps passé dans le menu
         temps_soustraire = SDL_GetTicks();
 
-        pause(10);
+        pause(30);
         
     }
 
