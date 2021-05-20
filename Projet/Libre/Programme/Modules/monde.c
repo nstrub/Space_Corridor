@@ -25,8 +25,10 @@ void init_data(world_t * world){
     //on n'est pas à la fin du jeu
     world->gameover = 0;
 
-    //Le sprite est affiché de base
+    //Le sprite du vaisseau et de la pièce sont affichés de base
     world->desappear = 0;
+    world->desappear_coin = 0;
+
 
     //On met la valeur end à une valeur différente de 0 et 1
     world->end = 2;
@@ -34,7 +36,6 @@ void init_data(world_t * world){
     // On met les autres valeurs à zéro.
     world->game = 0;
     world->menu = 0;
-    world->coins = 0;
 
     // Vitesse de base
     world->vitesse = INITIAL_SPEED;
@@ -76,7 +77,7 @@ void init_line(world_t *world){
 
     // Si le joueur choisi le niveau 1
     if(world->menu == 0){
-
+ 
         init_sprite(&world->arrivee, 0, -960, SCREEN_WIDTH, FINISH_LINE_HEIGHT);
 
     }
@@ -124,7 +125,7 @@ void init_walls(world_t *world){
 
 void init_coin(world_t *world){
 
-
+    world->secret = 0;
     // Si le joueur choisi le niveau 1
     if(world->menu == 0){
 
@@ -238,7 +239,13 @@ void update_piece(world_t *world){
 void finish_line(sprite_t *sp1, sprite_t *sp2, world_t *world, int temps){
     if(sprites_collide(sp1,sp2)){// Le vaisseau atteint la ligne d'arrivée
         printf("VOUS AVEZ GAGNé(e) EN %d secondes !!! ggwp\n",temps/1000);
-        printf("Nombre de pièce : %d\n",world->coins);
+        printf("%d\n",world->secret);
+        if(world->secret ==! 0){
+            printf("W O W\nVous avez trouvé le secret :o !!! Vous êtes vraiment trop fortiche !!!\n");
+        }
+        else{
+            printf("Vous n'avez pas trouvé le secret... Dommage :c\n");
+        }
         fin_de_partie(world);
         world->end = 0;
     }
@@ -263,8 +270,10 @@ void collision_meteore(sprite_t *sp1, sprite_t *sp2, world_t *world){
 
 void collision_piece(sprite_t *sp1, sprite_t *sp2, world_t *world){
     if(sprites_collide(sp1,sp2)){
-        world->coins ++;
-        printf("\n\nbruit_de_pièce.mp3\n\n");
+        world->secret = 1;                      //Le joueur trouve le secret !
+        printf("\n\nbruit_de_pièce.mp3\n\n");   //On affiche dans la console également
+        world->desappear_coin = 1;              //On fait disparaître la pièce
+        init_sprite(&world->coin,0,0,0,0);   //On donne des collisions nulles au sprite
     }
 }
 

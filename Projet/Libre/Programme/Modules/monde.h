@@ -109,10 +109,11 @@ struct world_s{
     int gameover; /*!< Champ indiquant si l'on est à la fin du jeu */
     int vitesse; /*!< Vitesse de déplacement de base des strucures*/
     int desappear; /*!< Variable qui sert à afficher le sprite du vaisseau*/
+    int desappear_coin; /*!< Variable qui sert à afficher le sprite de la pièce */
     int end; /*!< Type de fin de partie*/
     int game; /*!< variable qui gère les différentes parties.*/
     int menu; /*!< Gère les données affichées dans le menu.*/
-    int coins; /*!<Gère le nombre de pièce qu'a collecter le joueur.*/
+    int secret; /*!<Regarde si le joueur à trouvé la pièce secrète*/
     //int nombre_murs; /*!<Nombre de mur effectifs.*/
 
 };
