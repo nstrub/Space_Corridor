@@ -71,6 +71,10 @@ void handle_events(SDL_Event *event,world_t *world){
                     world->game = 1;
                  
                 }
+                if(world->game != 0 && world->game != 1) 
+                {
+                    world->vitesse = 0;
+                }
             }
 
             // Dans le menu
